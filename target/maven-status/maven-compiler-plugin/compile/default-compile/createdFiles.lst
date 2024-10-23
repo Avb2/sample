@@ -12,6 +12,7 @@ org/com/components/EnterBtn.class
 org/com/components/MainMenuBtn.class
 module-info.class
 org/com/constants/ScreenSizes.class
+org/com/db/Connect.class
 org/com/screens/RegisterScreen.class
 org/com/screens/SplashScreen.class
 org/com/App.class
