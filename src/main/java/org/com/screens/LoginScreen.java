@@ -13,6 +13,7 @@ import org.com.components.EnterBtn;
 import org.com.components.InputField;
 import org.com.components.MainMenuBtn;
 import org.com.constants.ScreenSizes;
+import org.com.state.UserState;
 
 
 
@@ -26,7 +27,7 @@ public class LoginScreen extends Screen {
 
         
         // Return to Main Menu Button
-        pane.add(MainMenuBtn.MainMenuBtn(stage), 0, 0);
+        pane.add(MainMenuBtn.mainMenuButton(stage), 0, 0);
 
         // Login title label
         Label loginTitle = new Label("LOGIN");
@@ -49,7 +50,21 @@ public class LoginScreen extends Screen {
 
 
         // Login Button
-        subPane.add(EnterBtn.EnterButton(e -> {}), 0, 2);
+        subPane.add(EnterBtn.EnterButton(e -> {
+            // TODO validate User and password through db
+
+            if (true){
+                // Create user state
+                UserState userState = new UserState();
+                userState.setLoggedInState();
+                userState.setName("Alex", "Bringuel");
+                stage.setScene(new HomeScreen(userState).createScreen(stage));
+            } else {
+                System.out.println("Failed to validate user");
+            }
+
+            
+        }), 0, 2);
 
 
         // Reset Password Button

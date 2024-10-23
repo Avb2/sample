@@ -58,6 +58,7 @@ public class SplashScreen extends Screen{
         Button registerBtn = new Button( "Register");
         registerBtn.setPrefSize(100,30);
         registerBtn.setStyle("-fx-font-size: 15");
+        registerBtn.setOnAction(e -> stage.setScene(new RegisterScreen().createScreen(stage)));
         subPane.add(registerBtn, 0, 1);
 
 

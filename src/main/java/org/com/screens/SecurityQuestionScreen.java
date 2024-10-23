@@ -17,7 +17,7 @@ public class SecurityQuestionScreen extends Screen{
         GridPane pane = new GridPane();
 
         // Main menu button
-        pane.add(MainMenuBtn.MainMenuBtn(stage), 0, 0);
+        pane.add(MainMenuBtn.mainMenuButton(stage), 0, 0);
 
         // Reset password label
         Label label = new Label("Reset Password");
