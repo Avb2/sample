@@ -1,4 +1,4 @@
-package org.openjfx;
+package org.com;
 
 public class SystemInfo {
 

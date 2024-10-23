@@ -1,3 +1,12 @@
+org/com/components/EnterBtn.class
+org/com/components/MainMenuBtn.class
 module-info.class
-org/openjfx/App.class
-org/openjfx/SystemInfo.class
+org/com/constants/ScreenSizes.class
+org/com/screens/ResetPasswordScreen.class
+org/com/screens/SecurityQuestionScreen.class
+org/com/SystemInfo.class
+org/com/bases/Screen.class
+org/com/components/InputField.class
+org/com/screens/SplashScreen.class
+org/com/screens/LoginScreen.class
+org/com/App.class

@@ -1,4 +1,6 @@
 module org.openjfx {
     requires javafx.controls;
-    exports org.openjfx;
+    requires javafx.graphics;
+    requires javafx.base;
+    exports org.com;
 }
