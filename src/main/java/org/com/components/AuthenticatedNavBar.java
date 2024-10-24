@@ -16,11 +16,12 @@ public class AuthenticatedNavBar{
         pane.setAlignment(Pos.CENTER);
         pane.setHgap(40);
 
-        String name;
+        String name = null;
         try {
             name  = userState.getName().get("first name");
-        } finally {
-            System.out.println("Cant find name");
+            
+        } catch (NullPointerException e) {
+            System.out.println("");
         }
 
         pane.add(MainMenuBtn.mainMenuButton(stage, userState), 0, 0);

@@ -8,13 +8,16 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
+
+import java.sql.ResultSet;
+import java.util.Hashtable;
 import org.com.bases.Screen;
 import org.com.components.EnterBtn;
 import org.com.components.InputField;
 import org.com.components.MainMenuBtn;
 import org.com.constants.ScreenSizes;
 import org.com.state.UserState;
-
+import org.com.db.Connect;
 
 
 public class LoginScreen extends Screen {
@@ -42,22 +45,40 @@ public class LoginScreen extends Screen {
 
 
         // Username Label
-        subPane.add(InputField.inputField("Username"), 0, 0, 2, 1);
+        GridPane usernameFieldPane = InputField.inputField("Username");
+        subPane.add(usernameFieldPane, 0, 0, 2, 1);
 
 
         // Password Label
-        subPane.add(InputField.inputField("Password"), 0, 1, 2, 1);
+        GridPane passwordFieldPane = InputField.inputField("Password");
+        subPane.add(passwordFieldPane, 0, 1, 2, 1);
 
 
         // Login Button
         subPane.add(EnterBtn.EnterButton(e -> {
-            // TODO validate User and password through db
+            Connect conn = new Connect();
 
-            if (true){
+            TextField usernameField = (TextField) (usernameFieldPane.getChildren().get(1));
+            TextField passwordField = (TextField) (passwordFieldPane.getChildren().get(1));
+
+            String username = usernameField.getText();
+            String password = passwordField.getText();
+
+            Boolean validUser = conn.validateUsername(username, password);
+
+
+            if (validUser == true){
                 // Create user state
                 UserState userState = new UserState();
                 userState.setLoggedInState();
-                userState.setName("Alex", "Bringuel");
+
+                // Get users name
+                Hashtable<String, String> names = conn.retrieveName(username);
+                System.out.println(names);
+                // Set name in UserState
+                userState.setName(names.get("firstname"), names.get("lastname"));
+
+                // Push to main logged in screen
                 stage.setScene(new HomeScreen(userState).createScreen(stage));
             } else {
                 System.out.println("Failed to validate user");
