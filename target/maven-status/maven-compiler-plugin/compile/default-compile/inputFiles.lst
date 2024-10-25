@@ -9,6 +9,7 @@
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/screens/RegisterScreen.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/AuthenticatedNavBar.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/FlightCard.java
+/Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/db/parser/ResultSetParser.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/App.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/ManageFlightsButton.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/state/UserState.java

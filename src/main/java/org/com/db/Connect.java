@@ -2,6 +2,11 @@ package org.com.db;
 
 
 import java.util.Hashtable;
+
+import javax.xml.transform.Result;
+
+import org.com.db.parser.ResultSetParser;
+
 import java.sql.*;
 
 
@@ -23,6 +28,23 @@ public class Connect {
         }
     
         return conn;
+    }
+
+    public ResultSet query(String query){
+        // Connect to the database
+        Connection conn = connect();
+        ResultSet result = null;
+        
+        try{
+            // Initialize statement
+            Statement statement = conn.createStatement();
+
+            result = statement.executeQuery(query);
+
+        } catch (SQLException e){
+            System.err.println(e);
+        }
+        return result;
     }
 
 
@@ -86,29 +108,16 @@ public class Connect {
         
     }
 
+    public ResultSet retrieveFlights(){
+        return this.query("SELECT * FROM flights");
+    }
 
     public Hashtable<String, String> retrieveName(String username){
        ResultSet result = this.query("SELECT firstname, lastname FROM users WHERE username=?", new String[] {username}); 
-
-       Hashtable<String, String> names = new Hashtable<>();
-    
-       int count = 1;
-
-       try {
-        if (result.next()) {
-            // Retrieve and store the first and last names
-            names.put("firstname", result.getString("firstname"));
-            names.put("lastname", result.getString("lastname"));
-        }
-    } catch (SQLException e) {
-        e.printStackTrace();
+        
+        return new ResultSetParser(result).parseToStringDict(new String[] {"firstname", "lastname"});
     }
 
-    System.out.println(count);
-
-    return names;
 
 
-
-    }
 }   

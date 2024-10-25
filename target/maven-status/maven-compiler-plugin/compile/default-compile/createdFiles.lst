@@ -1,5 +1,6 @@
 org/com/components/LogOutBtn.class
 org/com/screens/ResetPasswordScreen.class
+org/com/db/parser/ResultSetParser.class
 org/com/screens/SecurityQuestionScreen.class
 org/com/components/AuthenticatedNavBar.class
 org/com/SystemInfo.class

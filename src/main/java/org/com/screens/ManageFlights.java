@@ -4,6 +4,7 @@ package org.com.screens;
 import org.com.bases.Screen;
 import org.com.components.AuthenticatedNavBar;
 import org.com.state.UserState;
+import org.com.db.Connect;
 
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -27,9 +28,16 @@ public class ManageFlights extends Screen{
         pane.add(new AuthenticatedNavBar(stage, this.userState).createComponent(), 0, 0);
 
 
-        Label label = new Label("Manage flights");
+        Label titleLabel = new Label("Manage flights");
+        pane.add(titleLabel, 0 ,1);
 
-        return new Scene(pane, 300, 300);
+        // Get all flights
+
+
+
+        // Display flights as flight cards wrapped in a grid pane with add/remove buttons
+
+        return new Scene(pane, 450, 600);
         
     }   
 }
