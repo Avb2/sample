@@ -4,7 +4,7 @@ import org.com.bases.Screen;
 import org.com.components.EnterBtn;
 import org.com.components.InputField;
 import org.com.components.MainMenuBtn;
-import org.com.constants.ScreenSizes;
+import org.com.constants.Sizes;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -20,7 +20,7 @@ public class ResetPasswordScreen extends Screen {
     public Scene createScreen(Stage stage){
         // Main pane
         GridPane pane = new GridPane();
-        pane.setVgap(ScreenSizes.largeGap);
+        pane.setVgap(Sizes.largeGap);
         pane.setAlignment(Pos.CENTER);
 
 
@@ -34,8 +34,8 @@ public class ResetPasswordScreen extends Screen {
 
 
         GridPane subPane = new GridPane();
-        subPane.setVgap(ScreenSizes.mediumGap);
-        subPane.setHgap(ScreenSizes.mediumGap);
+        subPane.setVgap(Sizes.mediumGap);
+        subPane.setHgap(Sizes.mediumGap);
         pane.add(subPane, 0, 3);
 
 

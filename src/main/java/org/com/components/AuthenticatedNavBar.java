@@ -1,7 +1,9 @@
 package org.com.components;
 
-import org.com.constants.ScreenSizes;
+import org.com.constants.Sizes;
 import org.com.state.UserState;
+import org.com.components.ManageFlightsButton;
+import org.com.bases.Component;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -9,24 +11,30 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class AuthenticatedNavBar{
+import javafx.scene.Node; 
 
-    public static GridPane navBar(Stage stage, UserState userState){
+
+public class AuthenticatedNavBar extends Component{
+    private final Stage stage;
+    private UserState userState;
+
+    public AuthenticatedNavBar(Stage stage, UserState userState){
+        this.stage = stage;
+        this.userState = userState;
+    }
+
+    @Override
+    public Node createComponent(){
         GridPane pane = new GridPane();
         pane.setAlignment(Pos.CENTER);
         pane.setHgap(40);
 
-        String name = null;
-        try {
-            name  = userState.getName().get("first name");
-            
-        } catch (NullPointerException e) {
-            System.out.println("");
-        }
+        
 
-        pane.add(MainMenuBtn.mainMenuButton(stage, userState), 0, 0);
-        pane.add(new Label("Welcome, " + name + "!"), 1, 0);
-        pane.add(LogOutBtn.LogOutButton(stage, userState), 2, 0);
+        pane.add(MainMenuBtn.mainMenuButton(this.stage, this.userState), 0, 0);
+        pane.add(new ManageFlightsButton(this.stage, this.userState).createComponent(), 1, 0);
+        
+        pane.add(LogOutBtn.LogOutButton(this.stage, this.userState), 2, 0);
 
         return pane;
 

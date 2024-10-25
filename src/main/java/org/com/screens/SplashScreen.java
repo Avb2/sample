@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import org.com.bases.Screen;
-import org.com.constants.ScreenSizes;
+import org.com.constants.Sizes;
 
 public class SplashScreen extends Screen{
     public Scene createScreen(Stage stage){
@@ -20,7 +20,7 @@ public class SplashScreen extends Screen{
         
         // Main splash screen
         GridPane mainPane = new GridPane();
-        mainPane.setVgap(ScreenSizes.largeGap);
+        mainPane.setVgap(Sizes.largeGap);
         mainPane.setAlignment(Pos.CENTER);
 
         Label label = new Label("QualityAirlines.com");
@@ -45,7 +45,7 @@ public class SplashScreen extends Screen{
 
         GridPane subPane = new GridPane();
         subPane.setAlignment(Pos.CENTER);
-        subPane.setVgap(ScreenSizes.smallGap);
+        subPane.setVgap(Sizes.smallGap);
         mainPane.add(subPane, 0, 2);
 
         Button loginBtn = new Button("Login");

@@ -1,13 +1,16 @@
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/SystemInfo.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/InputField.java
+/Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/bases/Component.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/screens/HomeScreen.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/screens/SplashScreen.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/db/Connect.java
+/Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/screens/ManageFlights.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/EnterBtn.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/screens/RegisterScreen.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/AuthenticatedNavBar.java
+/Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/FlightCard.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/App.java
-/Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/constants/ScreenSizes.java
+/Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/ManageFlightsButton.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/state/UserState.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/MainMenuBtn.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/LogOutBtn.java
@@ -15,4 +18,5 @@
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/screens/SecurityQuestionScreen.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/module-info.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/screens/LoginScreen.java
+/Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/constants/Sizes.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/screens/ResetPasswordScreen.java

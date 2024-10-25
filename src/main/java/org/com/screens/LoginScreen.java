@@ -1,6 +1,5 @@
 package org.com.screens;
 
-import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -9,13 +8,13 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 
-import java.sql.ResultSet;
 import java.util.Hashtable;
+
 import org.com.bases.Screen;
 import org.com.components.EnterBtn;
 import org.com.components.InputField;
 import org.com.components.MainMenuBtn;
-import org.com.constants.ScreenSizes;
+import org.com.constants.Sizes;
 import org.com.state.UserState;
 import org.com.db.Connect;
 
@@ -26,7 +25,7 @@ public class LoginScreen extends Screen {
         // Grid
         GridPane pane = new GridPane();
         pane.setAlignment(Pos.CENTER);
-        pane.setVgap(ScreenSizes.mediumGap);
+        pane.setVgap(Sizes.mediumGap);
 
         
         // Return to Main Menu Button
@@ -40,7 +39,7 @@ public class LoginScreen extends Screen {
 
         // Add subpane to main pane
         GridPane subPane = new GridPane();
-        subPane.setVgap(ScreenSizes.smallGap);
+        subPane.setVgap(Sizes.smallGap);
         pane.add(subPane, 0, 4);
 
 
@@ -57,16 +56,18 @@ public class LoginScreen extends Screen {
         // Login Button
         subPane.add(EnterBtn.EnterButton(e -> {
             Connect conn = new Connect();
-
+            // Extract textfields from gridpanes
             TextField usernameField = (TextField) (usernameFieldPane.getChildren().get(1));
             TextField passwordField = (TextField) (passwordFieldPane.getChildren().get(1));
 
+            // Extract text from textfields
             String username = usernameField.getText();
             String password = passwordField.getText();
 
+            // Validate user by username and password
             Boolean validUser = conn.validateUsername(username, password);
 
-
+            // Login user if auth was successful
             if (validUser == true){
                 // Create user state
                 UserState userState = new UserState();
