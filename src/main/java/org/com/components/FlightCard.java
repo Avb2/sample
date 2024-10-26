@@ -14,7 +14,17 @@ import javafx.scene.paint.Color;
 import javafx.geometry.Insets;
 
 
+
 public class FlightCard extends Component{
+    private String number;
+    private String destination;
+    private String status;
+
+    public FlightCard(String number, String destination, String status){
+        this.number = number;
+        this.destination = destination;
+        this.status = status;
+    }
 
     @Override
     public Node createComponent() {
@@ -27,10 +37,10 @@ public class FlightCard extends Component{
 
         pane.setPadding(new Insets(10, 10, 10, 10));
 
-        Label flightNumLabel = new Label("001923");
+        Label flightNumLabel = new Label(this.number);
         pane.add(flightNumLabel, 0, 0, 5, 1);
 
-        Label flightStatus = new Label("Boarding");
+        Label flightStatus = new Label(this.status);
         pane.add(flightStatus, 6, 0);
 
         Label departureLocationLabel = new Label("Harstfield Jackson Intl. Airport");
@@ -41,7 +51,7 @@ public class FlightCard extends Component{
         pane.add(toArrowLabel, 2, 1);
 
         Label destinationLabel = 
-        new Label("JFK Intl. Airport");
+        new Label(this.destination);
         pane.add(destinationLabel, 4, 1);
 
         Label timeLabel = new Label("10:00");

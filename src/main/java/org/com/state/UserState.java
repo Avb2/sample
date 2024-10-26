@@ -1,6 +1,6 @@
 package org.com.state;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 
 public class UserState {
     private String firstName;
@@ -10,8 +10,8 @@ public class UserState {
 
 
     // Getters
-    public Hashtable<String, String> getName(){
-        Hashtable<String, String> name = new Hashtable<>();
+    public HashMap<String, String> getName(){
+        HashMap<String, String> name = new HashMap<>();
 
         name.put("first name", this.firstName);
         name.put("last name", this.lastName);

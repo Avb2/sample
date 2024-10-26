@@ -1,7 +1,7 @@
 package org.com.db;
 
 
-import java.util.Hashtable;
+import java.util.HashMap;
 
 import javax.xml.transform.Result;
 
@@ -9,6 +9,9 @@ import org.com.db.parser.ResultSetParser;
 
 import java.sql.*;
 
+import java.util.List; 
+import java.util.Map;
+import java.util.ArrayList;
 
 
 public class Connect {
@@ -112,7 +115,7 @@ public class Connect {
         return this.query("SELECT * FROM flights");
     }
 
-    public Hashtable<String, String> retrieveName(String username){
+    public Map<String, String>[] retrieveName(String username){
        ResultSet result = this.query("SELECT firstname, lastname FROM users WHERE username=?", new String[] {username}); 
         
         return new ResultSetParser(result).parseToStringDict(new String[] {"firstname", "lastname"});

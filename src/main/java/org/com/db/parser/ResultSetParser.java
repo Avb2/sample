@@ -4,10 +4,12 @@ import java.lang.reflect.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Dictionary;
-import java.util.Hashtable;
+import java.util.HashMap;
 import java.sql.Date;
 import java.sql.Time;
-
+import java.util.List; 
+import java.util.Map;
+import java.util.ArrayList;
 
 public class ResultSetParser {
     private ResultSet rs;
@@ -17,32 +19,38 @@ public class ResultSetParser {
     }
 
 
-    public Hashtable<String, String> parseToStringDict(String[] keys){
-        Hashtable<String, String> dict = new Hashtable<>();
-
+    public Map<String, String>[] parseToStringDict(String[] keys){
+        Map<String, String>[] dictList = new HashMap[keys.length];
+       int count = 0;
         try {
             if (this.rs.next()) {
+                HashMap<String, String> dict = new HashMap<String, String>();
+                
                 for (String key: keys){
                     System.out.println(key);
                     dict.put(key, this.rs.getString(key));
                 }
+
+                dictList[count] = dict;
+                count++;
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
 
-        return dict;
+        return dictList;
     }
 
 
-    public Hashtable<Object, Object> parse(String[] keys, Class<?>[] types){
+    public HashMap<Object, Object> parse(String[] keys, Class<?>[] types){
         // If lengths do not match return empty list
         if (keys.length != types.length){
-            return new Hashtable<>();
+            return new HashMap<>();
         }
 
-        Hashtable<Object, Object> dict = new Hashtable<>();
+        HashMap<Object, Object> dict = new HashMap<>();
 
 
        try { if (this.rs.next()){

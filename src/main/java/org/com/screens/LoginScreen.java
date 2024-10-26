@@ -8,7 +8,11 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 
-import java.util.Hashtable;
+import java.util.HashMap;
+
+import java.util.List; 
+import java.util.Map;
+import java.util.ArrayList;
 
 import org.com.bases.Screen;
 import org.com.components.EnterBtn;
@@ -74,10 +78,9 @@ public class LoginScreen extends Screen {
                 userState.setLoggedInState();
 
                 // Get users name
-                Hashtable<String, String> names = conn.retrieveName(username);
-                System.out.println(names);
+                Map<String, String>[] names = conn.retrieveName(username);
                 // Set name in UserState
-                userState.setName(names.get("firstname"), names.get("lastname"));
+                userState.setName(names[0].get("firstname"), names[0].get("lastname"));
 
                 // Push to main logged in screen
                 stage.setScene(new HomeScreen(userState).createScreen(stage));

@@ -49,10 +49,7 @@ public class HomeScreen extends Screen{
         // Retrieve flights
 
         // Create flight cards
-        for ( int x = 0; x < 5; x++){
-            subPane.add(new FlightCard().createComponent(), 0, x);
-        }
-
+        
         // Pagination button to load more flights
         
 
