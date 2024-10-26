@@ -6,7 +6,7 @@ import java.util.Map;
 import org.com.bases.Screen;
 import org.com.components.AuthenticatedNavBar;
 import org.com.state.UserState;
-import org.com.db.Connect;
+import org.com.db.FlightDatabase;
 import org.com.components.FlightCard;
 import org.com.db.parser.ResultSetParser;
 import org.com.constants.Sizes;
@@ -46,7 +46,7 @@ public class ManageFlights extends Screen{
         // TODO move this elsewhere, business logic
         // Get all flights
         String[] keys = new String[] {"number", "destination", "status"};
-        Map<String, String>[] flightData = new ResultSetParser(new Connect().retrieveFlights()).parseToStringDict(keys);
+        Map<String, String>[] flightData = new ResultSetParser(new FlightDatabase().retrieveFlights()).parseToStringDict(keys);
 
         System.out.println(flightData[0]);
 

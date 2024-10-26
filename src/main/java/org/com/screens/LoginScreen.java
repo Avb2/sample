@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
-
 import java.util.HashMap;
 
 import java.util.List; 
@@ -20,7 +19,7 @@ import org.com.components.InputField;
 import org.com.components.MainMenuBtn;
 import org.com.constants.Sizes;
 import org.com.state.UserState;
-import org.com.db.Connect;
+import org.com.db.UserDatabase;
 
 
 public class LoginScreen extends Screen {
@@ -59,7 +58,7 @@ public class LoginScreen extends Screen {
 
         // Login Button
         subPane.add(EnterBtn.EnterButton(e -> {
-            Connect conn = new Connect();
+            UserDatabase conn = new UserDatabase();
             // Extract textfields from gridpanes
             TextField usernameField = (TextField) (usernameFieldPane.getChildren().get(1));
             TextField passwordField = (TextField) (passwordFieldPane.getChildren().get(1));
