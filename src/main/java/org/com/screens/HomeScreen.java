@@ -18,7 +18,7 @@ import javafx.scene.Node;
 import java.sql.SQLException;
 import org.com.constants.Sizes;
 
-import org.com.db.FlightDatabase;
+import org.com.db.BookingDatabase;
 
 import java.util.Map;
 
@@ -67,7 +67,7 @@ public class HomeScreen extends Screen{
 
     
         try{
-            Map<String, String>[] flightData = new ResultSetParser(new FlightDatabase().retrieveFlightsByUser(userState.getUid())).parseToStringDict(keys);
+            Map<String, String>[] flightData = new ResultSetParser(new BookingDatabase().retrieveBookingByUser(userState.getUid())).parseToStringDict(keys);
                
 
         for (int i = 0; i < flightData.length; i++){
