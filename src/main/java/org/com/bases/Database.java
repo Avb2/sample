@@ -6,6 +6,13 @@ import java.sql.*;
 import java.util.List; 
 import java.util.Map;
 import java.util.ArrayList;
+import java.lang.reflect.Array;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Dictionary;
+import java.util.HashMap;
+import java.sql.Date;
+import java.sql.Time;
 
 
 
@@ -81,5 +88,54 @@ public abstract class Database {
         return result;
     }
 
+    // Update db
+    public void updateQuery(String query, Object[] args, Object[] types){
+        // Connect to the database
+        Connection conn = connect();
 
+        // Initialize statement
+        PreparedStatement statement = null;
+
+        // Create statement
+        try {
+            statement = conn.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }  
+
+        for (int i = 0; i < args.length; i++){
+            try {
+                if (types[i] == Integer.class) {
+                    statement.setInt(i + 1, (Integer) (args[i]));
+                } else if (types[i] == String.class) {
+                    statement.setString(i + 1, (String) (args[i]));
+                } else if (types[i] == Double.class) {
+                    statement.setDouble(i + 1, (Double) (args[i]));
+                
+                } else if (types[i] == Date.class) {
+                    statement.setDate(i + 1, (Date)(args[i]));
+                } else if (types[i] == Time.class) {
+                    statement.setTime(i + 1, (Time)(args[i]));
+                }
+                
+            } catch (SQLException e) {
+            }
+        }
+
+        // Update result from the db
+        try {
+            statement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+
+
+ 
 }
+
+
+

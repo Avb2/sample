@@ -23,6 +23,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.geometry.Pos;
 
+import org.com.db.BookingDatabase;
+import java.sql.Connection;
+
 
 public class ManageFlights extends Screen{
     private UserState userState;
@@ -52,7 +55,6 @@ public class ManageFlights extends Screen{
         try{
             Map<String, String>[] flightData = new ResultSetParser(new FlightDatabase().retrieveFlights()).parseToStringDict(keys);
                
-        System.out.println(flightData[0]);
 
         for (int i = 0; i < flightData.length; i++){
             if (flightData[i] != null) {
@@ -62,9 +64,20 @@ public class ManageFlights extends Screen{
 
             // Add delete Button
             Button addBtn = new Button("+");
+            final int index = i;
+            // Create a booking
+            addBtn.setOnAction(e -> {
+                Object[] vals = new Object[] {this.userState.getUid(),flightData[index].get(keys[0])};
+                Object[] types = new Object[] {Integer.class, String.class};
+                new BookingDatabase().createBooking(vals, types);
+                });
             tempPane.add(addBtn, 1,0);
-
+            
+            // Remove a booking
             Button deleteBtn = new Button("-");
+            deleteBtn.setOnAction(e -> {
+                
+            });
             tempPane.add(deleteBtn, 1,1);
 
 
