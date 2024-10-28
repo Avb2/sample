@@ -1,6 +1,7 @@
 package org.com.screens;
 
 
+import java.sql.SQLException;
 import java.util.Map;
 
 import org.com.bases.Screen;
@@ -46,8 +47,11 @@ public class ManageFlights extends Screen{
         // TODO move this elsewhere, business logic
         // Get all flights
         String[] keys = new String[] {"number", "destination", "status"};
-        Map<String, String>[] flightData = new ResultSetParser(new FlightDatabase().retrieveFlights()).parseToStringDict(keys);
 
+    
+        try{
+            Map<String, String>[] flightData = new ResultSetParser(new FlightDatabase().retrieveFlights()).parseToStringDict(keys);
+               
         System.out.println(flightData[0]);
 
         for (int i = 0; i < flightData.length; i++){
@@ -68,6 +72,11 @@ public class ManageFlights extends Screen{
         }
 
 
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    
 
         // Display flights as flight cards wrapped in a grid pane with add/remove buttons
 

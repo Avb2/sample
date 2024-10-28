@@ -14,6 +14,7 @@ public abstract class Database {
     private final String user = "alexbringuel";
     private final String password = "nova";
 
+    // Create a connection to the database;
     public Connection connect() {
         Connection conn = null;
         try {
@@ -35,7 +36,7 @@ public abstract class Database {
         
         try{
             // Initialize statement
-            Statement statement = conn.createStatement();
+            Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
             result = statement.executeQuery(query);
 
@@ -55,7 +56,7 @@ public abstract class Database {
 
         // Create statement
         try {
-            statement = conn.prepareStatement(query);
+            statement = conn.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
         } catch (SQLException e) {
             e.printStackTrace();
         }  

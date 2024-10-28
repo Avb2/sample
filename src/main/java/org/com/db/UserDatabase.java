@@ -11,35 +11,33 @@ import java.sql.SQLException;
 import org.com.bases.Database;
 
 
-
 public class UserDatabase extends Database{
-    public Map<String, String>[] retrieveName(String username){
+
+    public Map<String, Object>[] retrieveAllInfo (String username) throws SQLException{
+        ResultSet result = super.query("SELECT uid, firstname, lastname FROM users WHERE username=?", new String[] {username});
+        
+        return new ResultSetParser(result).parse(new String[] {"uid", "firstname", "lastname"}, new Class<?>[] {Integer.class, String.class, String.class});
+    }
+
+    public Map<String, String>[] retrieveName(String username) throws SQLException{
         ResultSet result = super.query("SELECT firstname, lastname FROM users WHERE username=?", new String[] {username}); 
          
          return new ResultSetParser(result).parseToStringDict(new String[] {"firstname", "lastname"});
      }
  
-    public Boolean validateUsername(String username, String password){
+    public Boolean validateUsername(String username, String password) throws SQLException{
         // Query db using username and password
         ResultSet rs = super.query("SELECT uid FROM users WHERE username=? AND password=?", new String[]{username, password});
 
-        // Count of returned instances from db
-        int count = 0;
-        
-        // Count instances 
-        try {
-            while (rs.next()){
-                count++;
-            }
-        } catch (SQLException e) {
-            System.out.println("No data found");
-        }
+        // Create parser object
+        ResultSetParser parser = new ResultSetParser(rs);
 
+        // Count rows in Result set
+        int count = parser.countResult(rs);
         // If there is exactly one matched instance, authenticate the user
         if (count == 1){
             return true;
         }
-
         return false;
         
     }

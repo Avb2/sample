@@ -10,6 +10,7 @@ module-info.class
 org/com/constants/Sizes.class
 org/com/screens/RegisterScreen.class
 org/com/screens/SplashScreen.class
+org/com/db/BookingDatabase.class
 org/com/db/FlightDatabase.class
 org/com/components/LogOutBtn.class
 org/com/screens/SecurityQuestionScreen.class

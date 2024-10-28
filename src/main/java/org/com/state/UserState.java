@@ -1,17 +1,23 @@
 package org.com.state;
 
+import java.util.Map;
+
+import org.com.db.UserDatabase;
+
+import java.sql.SQLException;
 import java.util.HashMap;
 
 public class UserState {
     private String firstName;
     private String lastName;
     private boolean loggedIn;
+    private int uid;
 
 
 
     // Getters
-    public HashMap<String, String> getName(){
-        HashMap<String, String> name = new HashMap<>();
+    public Map<String, String> getName(){
+        Map<String, String> name = new HashMap<>();
 
         name.put("first name", this.firstName);
         name.put("last name", this.lastName);
@@ -22,6 +28,10 @@ public class UserState {
 
     public boolean getLoggedInState(){
         return this.loggedIn;
+    }
+
+    public int getUid(){
+        return this.uid;
     }
 
     // Setters
@@ -37,10 +47,14 @@ public class UserState {
         this.lastName = name;
     }
 
+    private void setUIDpriv(int uid){
+        this.uid = uid;
+    }
+
 
     // Methods
 
-    // TODO this should validate name by some measure through db and then set name
+    
     public void setName(String firstName, String lastName){
         if (this.loggedIn == true){
             setFirstNamePriv(firstName);
@@ -50,6 +64,35 @@ public class UserState {
 
     public void setLoggedInState(){
         setLoggedInStatePriv();
+    }
+
+
+    public void login(UserDatabase connection, String username) throws SQLException{
+        // Get all of the user information from the database with the corresponding username
+        Map<String, Object>[] userInfo = connection.retrieveAllInfo(username);
+
+     
+        // Set logged in state
+        setLoggedInState();
+
+        System.out.println(userInfo[0]);
+
+
+        // Set name in UserState
+        this.setName((String) (userInfo[0].get("firstname")), (String) (userInfo[0].get("lastname")));
+
+        // Set UID
+        setUIDpriv((Integer) (userInfo[0].get("uid")));
+    }
+
+    public void logout(){
+        // Clear name
+        setName("", "");
+        // Clear logged in state
+        setLoggedInState();
+        // Clear UID
+        setUIDpriv(0);
+
     }
 
 
