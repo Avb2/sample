@@ -5,14 +5,25 @@ import org.com.components.AuthenticatedNavBar;
 import org.com.state.UserState;
 import org.com.components.FlightCard;
 
+
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
+import javafx.scene.Node;
 
+import java.sql.SQLException;
 import org.com.constants.Sizes;
+
+import org.com.db.FlightDatabase;
+
+import java.util.Map;
+
+import org.com.db.parser.ResultSetParser;
+
 
 
 
@@ -37,7 +48,7 @@ public class HomeScreen extends Screen{
             name  = userState.getName().get("first name");
             
         } catch (NullPointerException e) {
-            System.out.println("");
+            e.printStackTrace();
         }
         pane.add(new Label("Welcome, " + name + "!"), 0, 1);
 
@@ -49,6 +60,40 @@ public class HomeScreen extends Screen{
         // Retrieve flights
 
         // Create flight cards
+
+           // TODO move this elsewhere, business logic
+        // Get all flights
+        String[] keys = new String[] {"number", "destination", "status"};
+
+    
+        try{
+            Map<String, String>[] flightData = new ResultSetParser(new FlightDatabase().retrieveFlightsByUser(userState.getUid())).parseToStringDict(keys);
+               
+
+        for (int i = 0; i < flightData.length; i++){
+            if (flightData[i] != null) {
+            GridPane tempPane = new GridPane();
+            Node flightCard = new FlightCard(flightData[i].get(keys[0]), flightData[i].get(keys[1]), flightData[i].get(keys[2])).createComponent();
+            tempPane.add(flightCard, 0, 0, 1, 2);
+
+          
+            
+            // Remove a booking
+            Button deleteBtn = new Button("-");
+            deleteBtn.setOnAction(e -> {
+
+            });
+            tempPane.add(deleteBtn, 1,0);
+
+
+            pane.add(tempPane, 0, i + 2);}
+        }
+
+
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
         
         // Pagination button to load more flights
         

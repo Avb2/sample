@@ -12,6 +12,7 @@ public class UserState {
     private String lastName;
     private boolean loggedIn;
     private int uid;
+    private String username;
 
 
 
@@ -34,6 +35,10 @@ public class UserState {
         return this.uid;
     }
 
+    public String getUsername(){
+        return this.username;
+    }
+
     // Setters
     private void setLoggedInStatePriv(){
         this.loggedIn = !this.loggedIn;
@@ -52,6 +57,10 @@ public class UserState {
     }
 
 
+    private void setUsernamePriv(String username){
+        this.username = username;
+    }
+
     // Methods
 
     
@@ -67,13 +76,13 @@ public class UserState {
     }
 
 
-    public void login(UserDatabase connection, String username) throws SQLException{
+    public void login(UserDatabase userdb, String username) throws SQLException{
         // Get all of the user information from the database with the corresponding username
-        Map<String, Object>[] userInfo = connection.retrieveAllInfo(username);
+        Map<String, Object>[] userInfo = userdb.retrieveAllInfo(username);
 
      
         // Set logged in state
-        setLoggedInState();
+        this.setLoggedInState();
 
         System.out.println(userInfo[0]);
 
@@ -82,7 +91,10 @@ public class UserState {
         this.setName((String) (userInfo[0].get("firstname")), (String) (userInfo[0].get("lastname")));
 
         // Set UID
-        setUIDpriv((Integer) (userInfo[0].get("uid")));
+        this.setUIDpriv((Integer) (userInfo[0].get("uid")));
+
+        // Set username
+        this.setUsernamePriv(username);
     }
 
     public void logout(){
@@ -92,6 +104,8 @@ public class UserState {
         setLoggedInState();
         // Clear UID
         setUIDpriv(0);
+        //Clear username
+        setUsernamePriv("");
 
     }
 

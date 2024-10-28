@@ -47,6 +47,8 @@ public class ManageFlights extends Screen{
         pane.add(titleLabel, 0 ,1);
 
 
+
+
         // TODO move this elsewhere, business logic
         // Get all flights
         String[] keys = new String[] {"number", "destination", "status"};
@@ -76,12 +78,12 @@ public class ManageFlights extends Screen{
             // Remove a booking
             Button deleteBtn = new Button("-");
             deleteBtn.setOnAction(e -> {
-                
+
             });
             tempPane.add(deleteBtn, 1,1);
 
 
-            pane.add(tempPane, 0, i + 2);}
+            pane.add(tempPane, 0, i + 3);}
         }
 
 

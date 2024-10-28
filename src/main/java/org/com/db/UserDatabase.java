@@ -16,6 +16,7 @@ public class UserDatabase extends Database{
     public Map<String, Object>[] retrieveAllInfo (String username) throws SQLException{
         ResultSet result = super.query("SELECT uid, firstname, lastname FROM users WHERE username=?", new String[] {username});
         
+        
         return new ResultSetParser(result).parse(new String[] {"uid", "firstname", "lastname"}, new Class<?>[] {Integer.class, String.class, String.class});
     }
 

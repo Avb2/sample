@@ -35,7 +35,7 @@ public abstract class Database {
         return conn;
     }
 
-
+    // Query the database and return info
     public ResultSet query(String query){
         // Connect to the database
         Connection conn = connect();
@@ -52,7 +52,6 @@ public abstract class Database {
         }
         return result;
     }
-
 
     public ResultSet query(String query, String[] args){
         // Connect to the database
@@ -88,8 +87,7 @@ public abstract class Database {
         return result;
     }
 
-    // Update db
-    public void updateQuery(String query, Object[] args, Object[] types){
+    public ResultSet query(String query, Object[] args, Object[] types){
         // Connect to the database
         Connection conn = connect();
 
@@ -122,9 +120,56 @@ public abstract class Database {
             }
         }
 
+        // Initialize result set
+        ResultSet result = null;
+        
+        // Retrieve result from the db
+        try {
+            result = statement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+
+      // Update db
+      public void updateQuery(String query, Object[] args, Object[] types){
+        // Connect to the database
+        Connection conn = connect();
+
+        // Initialize statement
+        PreparedStatement statement = null;
+
+        // Create statement
+        try {
+            statement = conn.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }  
+
+        for (int i = 0; i < args.length; i++){
+            try {
+                if (types[i] == Integer.class) {
+                    statement.setInt(i + 1, (Integer) (args[i]));
+                } else if (types[i] == String.class) {
+                    statement.setString(i + 1, (String) (args[i]));
+                } else if (types[i] == Double.class) {
+                    statement.setDouble(i + 1, (Double) (args[i]));
+                
+                } else if (types[i] == Date.class) {
+                    statement.setDate(i + 1, (Date)(args[i]));
+                } else if (types[i] == Time.class) {
+                    statement.setTime(i + 1, (Time)(args[i]));
+                }
+            } catch (SQLException e) {
+            }
+        }
+
         // Update result from the db
         try {
-            statement.executeQuery();
+            statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -133,9 +178,5 @@ public abstract class Database {
 
 
 
-
- 
 }
-
-
 
