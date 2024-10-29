@@ -40,12 +40,13 @@ public class ResetPasswordScreen extends Screen {
 
 
         // Username form
-        subPane.add(InputField.inputField("Username"), 0, 0);
+        GridPane usernameField = InputField.inputField("Username");
+        subPane.add(usernameField, 0, 0);
         
     
         // Enter Button
         // TODO for now it just navs to next screen but need to add check for username in db which will retrieve security question
-        subPane.add(EnterBtn.EnterButton(e -> stage.setScene(new SecurityQuestionScreen().createScreen(stage))), 1, 1);
+        subPane.add(EnterBtn.EnterButton(e -> stage.setScene(new SecurityQuestionScreen(usernameField.getChildren().getText()).createScreen(stage))), 1, 1);
 
 
 

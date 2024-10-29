@@ -10,7 +10,16 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+
+import java.util.Map;
+
 public class SecurityQuestionScreen extends Screen{
+    private String question;
+    private String answer;
+
+    public SecurityQuestionScreen(String username){
+        Map<String, String> securityInfo = new SecurityDatabase().passwordRecoveryInfo(username);
+    }
 
     @Override
     public Scene createScreen(Stage stage) {
@@ -30,7 +39,7 @@ public class SecurityQuestionScreen extends Screen{
 
 
         // Security Question answer field & label
-        subpane.add(new Label("SECURITY QUESTION WILL GO HERE"), 0, 0);
+        subpane.add(new Label(), 0, 0);
         subpane.add(InputField.inputField("Answer"), 0, 1);
 
         // Enter Button
