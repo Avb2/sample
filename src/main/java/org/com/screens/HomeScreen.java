@@ -72,21 +72,27 @@ public class HomeScreen extends Screen{
 
         for (int i = 0; i < flightData.length; i++){
             if (flightData[i] != null) {
-            GridPane tempPane = new GridPane();
-            Node flightCard = new FlightCard(flightData[i].get(keys[0]), flightData[i].get(keys[1]), flightData[i].get(keys[2])).createComponent();
-            tempPane.add(flightCard, 0, 0, 1, 2);
+                final int index = i;
+                GridPane tempPane = new GridPane();
+                Node flightCard = new FlightCard(flightData[i].get(keys[0]), flightData[i].get(keys[1]), flightData[i].get(keys[2])).createComponent();
+                tempPane.add(flightCard, 0, 0, 1, 2);
 
-          
             
-            // Remove a booking
-            Button deleteBtn = new Button("-");
-            deleteBtn.setOnAction(e -> {
+                
+                // Remove a booking
+                Button deleteBtn = new Button("-");
+                deleteBtn.setOnAction(e -> {
+                    
+                    new BookingDatabase().removeBooking(this.userState.getUid(), flightData[index].get(keys[0]));
 
-            });
-            tempPane.add(deleteBtn, 1,0);
+                    tempPane.getChildren().remove(flightCard);
+                    tempPane.getChildren().remove(deleteBtn);
+                });
+                tempPane.add(deleteBtn, 1,0);
 
 
-            pane.add(tempPane, 0, i + 2);}
+                pane.add(tempPane, 0, i + 2);
+            }
         }
 
 

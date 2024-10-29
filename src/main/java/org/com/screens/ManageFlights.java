@@ -78,7 +78,8 @@ public class ManageFlights extends Screen{
             // Remove a booking
             Button deleteBtn = new Button("-");
             deleteBtn.setOnAction(e -> {
-
+                new BookingDatabase().removeBooking(this.userState.getUid(), flightData[index].get(keys[0]));
+                
             });
             tempPane.add(deleteBtn, 1,1);
 
