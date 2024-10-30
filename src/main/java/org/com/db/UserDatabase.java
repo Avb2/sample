@@ -43,4 +43,11 @@ public class UserDatabase extends Database{
         
     }
 
+    public void registerUser(Object[] info) throws SQLException{
+        super.updateQuery(
+            "INSERT INTO users(firstname, lastname, address, zipcode, state, username, password, email, ssn, question, answer) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+            info,
+            new Object[] {String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class}
+            );
+    }
 }   

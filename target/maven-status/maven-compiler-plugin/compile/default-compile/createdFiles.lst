@@ -22,6 +22,7 @@ org/com/components/InputField.class
 org/com/db/UserDatabase.class
 org/com/components/ManageFlightsButton.class
 org/com/screens/HomeScreen.class
+org/com/functionality/registration/Validator.class
 org/com/components/FlightCard.class
 org/com/components/EnterBtn.class
 org/com/screens/ManageFlights.class
