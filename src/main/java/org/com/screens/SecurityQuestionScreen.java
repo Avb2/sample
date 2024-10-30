@@ -4,13 +4,14 @@ import org.com.bases.Screen;
 import org.com.components.EnterBtn;
 import org.com.components.InputField;
 import org.com.components.MainMenuBtn;
+import org.com.db.SecurityDatabase;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-
+import java.sql.SQLException;
 import java.util.Map;
 
 public class SecurityQuestionScreen extends Screen{
@@ -18,7 +19,13 @@ public class SecurityQuestionScreen extends Screen{
     private String answer;
 
     public SecurityQuestionScreen(String username){
-        Map<String, String> securityInfo = new SecurityDatabase().passwordRecoveryInfo(username);
+        Map<String, String> securityInfo = null;
+        try {
+            securityInfo = new SecurityDatabase().passwordRecoveryInfo(username);
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        
     }
 
     @Override

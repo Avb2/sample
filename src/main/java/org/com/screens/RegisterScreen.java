@@ -13,6 +13,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import org.com.functionality.registration.RegisterFunctionality;
+import org.com.functionality.login.LoginFunctionality;
+
 public class RegisterScreen extends Screen{
     public Scene createScreen(Stage stage){
         // Grid pane
@@ -31,24 +34,62 @@ public class RegisterScreen extends Screen{
         GridPane subpane = new GridPane();
         pane.add(subpane, 0, 4);
 
-        subpane.add(InputField.inputField("First Name"), 0 ,0);
-        subpane.add(InputField.inputField("Last Name"),0 ,1);
-        subpane.add(InputField.inputField("Address"),0 ,2);
-        subpane.add(InputField.inputField("Zipcode"), 0 ,3);
-        subpane.add(InputField.inputField("State"), 0 ,4);
-        subpane.add(InputField.inputField("Username"), 0 ,5);
-        subpane.add(InputField.inputField("Password"), 0 ,6);
-        subpane.add(InputField.inputField("Email"), 0 ,7);
-        subpane.add(InputField.inputField("SSN"), 0 ,8);
-        subpane.add(InputField.inputField("Security Question"), 0 ,9);
+        // First name
+        GridPane firstNameField = InputField.inputField("First Name");
+        subpane.add(firstNameField, 0 ,0);
+        
+        // last name 
+        GridPane lastNameField = InputField.inputField("Last Name");
+        subpane.add(lastNameField,0 ,1);
+
+        // Address
+        GridPane addressField =  InputField.inputField("Address");
+        subpane.add(addressField,0 ,2);
+
+        // Zipcode field
+        GridPane zipcodeField =  InputField.inputField("Zipcode");
+        subpane.add(zipcodeField, 0 ,3);
+
+        // State field
+        GridPane stateField =  InputField.inputField("State");
+        subpane.add(stateField, 0 ,4);
+
+        // Username
+        GridPane usernameField = InputField.inputField("Username");
+        subpane.add(usernameField, 0 ,5);
+
+        // Password
+        GridPane passwordField = InputField.inputField("Password");
+        subpane.add(passwordField, 0 ,6);
+
+        // Email
+        GridPane emailField = InputField.inputField("Email");
+        subpane.add(emailField, 0 ,7);
+
+        // SSN 
+        GridPane ssnField = InputField.inputField("SSN");
+        subpane.add(ssnField, 0 ,8);
+
+        // Security Question
+        GridPane securityQuestion = InputField.inputField("Security Question");
+        subpane.add(securityQuestion, 0 ,9);
+
+        // Security Question
+        GridPane securityAnswer = InputField.inputField("Security Answer");
+        subpane.add(securityAnswer, 0 ,10);
+
 
 
         pane.add(EnterBtn.EnterButton(e -> {
             // Create account
+            boolean valid = RegisterFunctionality.validateRegistrationForm(new GridPane[] {usernameField, passwordField});
 
+            
+            System.out.println(valid); 
+            
             // IF account creation success
-            if (true){
-                stage.setScene(new LoginScreen().createScreen(stage));
+            if (valid == true){
+                LoginFunctionality.login(usernameField, passwordField, stage);
             }
         }), 0, 5, 2, 1);
         

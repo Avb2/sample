@@ -84,8 +84,6 @@ public class UserState {
         // Set logged in state
         this.setLoggedInState();
 
-        System.out.println(userInfo[0]);
-
 
         // Set name in UserState
         this.setName((String) (userInfo[0].get("firstname")), (String) (userInfo[0].get("lastname")));

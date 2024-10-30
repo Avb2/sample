@@ -54,7 +54,6 @@ public class ResultSetParser {
                 HashMap<String, String> dict = new HashMap<String, String>();
                 
                 for (String key: keys){
-                    System.out.println(key);
                     dict.put(key, this.rs.getString(key));
                 }
 
@@ -72,7 +71,6 @@ public class ResultSetParser {
               HashMap<String, String> dict = new HashMap<String, String>();
               
               for (String key: keys){
-                  System.out.println(key);
                   dict.put(key, result.getString(key));
               }
 

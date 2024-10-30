@@ -22,6 +22,7 @@ import org.com.components.MainMenuBtn;
 import org.com.constants.Sizes;
 import org.com.state.UserState;
 import org.com.db.UserDatabase;
+import org.com.functionality.login.LoginFunctionality;
 
 public class LoginScreen extends Screen {
     @Override
@@ -53,38 +54,7 @@ public class LoginScreen extends Screen {
 
         // Login Button
         subPane.add(EnterBtn.EnterButton(e -> {
-            UserDatabase conn = new UserDatabase();
-            // Extract textfields from gridpanes
-            TextField usernameField = (TextField) (usernameFieldPane.getChildren().get(1));
-            TextField passwordField = (TextField) (passwordFieldPane.getChildren().get(1));
-
-            // Extract text from textfields
-            String username = usernameField.getText();
-            String password = passwordField.getText();
-
-            try {
-                // Validate user by username and password
-                Boolean validUser = conn.validateUsername(username, password);
-
-                // Login user if auth was successful
-                if (validUser == true) {
-                    // Create user state
-                    UserState userState = new UserState();
-                    
-                    // Update user state and status within User State
-                    userState.login(conn, username);
-                   
-                
-
-                    // Push to main logged in screen
-                    stage.setScene(new HomeScreen(userState).createScreen(stage));
-                } else {
-                    System.out.println("Failed to validate user");
-                }
-            } catch (SQLException error) {
-                error.printStackTrace();
-            }
-
+            LoginFunctionality.login(usernameFieldPane, passwordFieldPane, stage);
         }), 0, 2);
 
         // Reset Password Button

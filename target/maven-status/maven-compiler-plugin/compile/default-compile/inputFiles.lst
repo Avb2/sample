@@ -4,6 +4,7 @@
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/screens/ManageFlights.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/screens/RegisterScreen.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/ManageFlightsButton.java
+/Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/functionality/login/LoginFunctionality.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/MainMenuBtn.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/LogOutBtn.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/bases/Screen.java
@@ -25,4 +26,5 @@
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/App.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/state/UserState.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/db/BookingDatabase.java
+/Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/functionality/registration/RegisterFunctionality.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/FilterBar.java
