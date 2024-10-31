@@ -7,7 +7,7 @@ import org.com.bases.Database;
 public class FlightDatabase extends Database {
 
     public ResultSet retrieveFlights(){
-        return super.query("SELECT * FROM flights");
+        return super.query("SELECT * FROM Flights");
     }
 
 }   

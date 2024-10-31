@@ -89,7 +89,7 @@ public class UserState {
         this.setName((String) (userInfo[0].get("firstname")), (String) (userInfo[0].get("lastname")));
 
         // Set UID
-        this.setUIDpriv((Integer) (userInfo[0].get("uid")));
+        this.setUIDpriv((Integer) (userInfo[0].get("id")));
 
         // Set username
         this.setUsernamePriv(username);
