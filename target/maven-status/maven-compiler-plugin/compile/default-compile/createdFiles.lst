@@ -18,6 +18,7 @@ org/com/db/FlightDatabase.class
 org/com/components/LogOutBtn.class
 org/com/screens/SecurityQuestionScreen.class
 org/com/SystemInfo.class
+org/com/functionality/resetPassword/ResetPasswordFunctionality.class
 org/com/components/InputField.class
 org/com/db/UserDatabase.class
 org/com/components/ManageFlightsButton.class

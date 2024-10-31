@@ -94,9 +94,9 @@ public class RegisterFunctionality {
         // make sure no conflicting in db
     }
 
-    // Contains letters/special chars and numbers
+    // Password contains letters/special chars and numbers
     public static boolean validatePassword(String password){
-        if (password.matches("(?i)[a-z!@#$%^&*_+-]{1,10}[1-9]{1,8}")){
+        if (password.matches("(?i)[a-z1-9!@#$%^&*_+-]{4,15}")){
             return true;
         } 
         return false;

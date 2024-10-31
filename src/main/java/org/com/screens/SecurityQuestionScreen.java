@@ -14,19 +14,19 @@ import javafx.stage.Stage;
 import java.sql.SQLException;
 import java.util.Map;
 
-public class SecurityQuestionScreen extends Screen{
-    private String question;
-    private String answer;
 
-    public SecurityQuestionScreen(String username){
-        Map<String, String> securityInfo = null;
-        try {
-            securityInfo = new SecurityDatabase().passwordRecoveryInfo(username);
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
-        
+
+public class SecurityQuestionScreen extends Screen{
+    private final String question;
+    private final String answer;
+
+  
+    public SecurityQuestionScreen(String question, String answer){
+       
+        this.question = question;
+        this.answer = answer;
     }
+    
 
     @Override
     public Scene createScreen(Stage stage) {
@@ -43,14 +43,22 @@ public class SecurityQuestionScreen extends Screen{
         GridPane subpane = new GridPane();
         pane.add(subpane, 0, 4);
 
+        
+        subpane.add(new Label(this.question), 0, 0);
 
 
         // Security Question answer field & label
         subpane.add(new Label(), 0, 0);
-        subpane.add(InputField.inputField("Answer"), 0, 1);
+        GridPane answerPane = InputField.inputField("Answer");
+        subpane.add(answerPane, 0, 1);
+
 
         // Enter Button
-        subpane.add(EnterBtn.EnterButton(e -> {}), 0, 2);
+        subpane.add(EnterBtn.EnterButton(e -> {
+            TextField answerTextField = (TextField) (answerPane.getChildren().get(1));
+            if (answerTextField.getText.equals(this.answer)){
+            }
+        }), 0, 2);
         return new Scene(pane, 450, 300);
     }
     

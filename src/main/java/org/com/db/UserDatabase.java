@@ -50,4 +50,10 @@ public class UserDatabase extends Database{
             new Object[] {String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class}
             );
     }
+
+    public Map<String, String> retrieveSecurityInfo(String username) throws SQLException {
+        ResultSet result = super.query("SELECT question, answer FROM users WHERE username=?", new String[] {username});
+        return new ResultSetParser(result).parseToStringDict(new String[] {"question", "answer"})[0];
+    }
+
 }   

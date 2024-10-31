@@ -12,10 +12,17 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import org.com.db.UserDatabase;
+
+import java.sql.SQLException;
+import java.util.Map;
 
 
 
 public class ResetPasswordScreen extends Screen {
+    
+
+
     @Override
     public Scene createScreen(Stage stage){
         // Main pane
@@ -46,7 +53,17 @@ public class ResetPasswordScreen extends Screen {
     
         // Enter Button
         // TODO for now it just navs to next screen but need to add check for username in db which will retrieve security question
-        subPane.add(EnterBtn.EnterButton(e -> stage.setScene(new SecurityQuestionScreen("avb2").createScreen(stage))), 1, 1);
+        subPane.add(EnterBtn.EnterButton(
+            e -> {
+                try {
+                TextField usernameTextField = (TextField) (usernameField.getChildren().get(1));
+                Map<String, String> securityInfo =  new UserDatabase().retrieveSecurityInfo(usernameTextField.getText());
+                stage.setScene(new SecurityQuestionScreen(securityInfo.get("question"), securityInfo.get("Answer")).createScreen(stage));
+               } catch (SQLException err){
+                err.printStackTrace();
+               }
+            }
+            ), 1, 1);
 
 
 
