@@ -13,10 +13,8 @@ org/com/constants/Sizes.class
 org/com/screens/RegisterScreen.class
 org/com/screens/SplashScreen.class
 org/com/db/BookingDatabase.class
-org/com/db/SecurityDatabase.class
 org/com/db/FlightDatabase.class
 org/com/components/LogOutBtn.class
-org/com/screens/SecurityQuestionScreen.class
 org/com/SystemInfo.class
 org/com/functionality/resetPassword/ResetPasswordFunctionality.class
 org/com/components/InputField.class
@@ -26,6 +24,7 @@ org/com/screens/HomeScreen.class
 org/com/functionality/registration/Validator.class
 org/com/components/FlightCard.class
 org/com/components/EnterBtn.class
+org/com/components/SecurityQuestionPane.class
 org/com/screens/ManageFlights.class
 org/com/bases/Component.class
 org/com/App.class

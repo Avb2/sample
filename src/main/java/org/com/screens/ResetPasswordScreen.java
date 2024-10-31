@@ -16,6 +16,7 @@ import org.com.db.UserDatabase;
 
 import java.sql.SQLException;
 import java.util.Map;
+import org.com.components.SecurityQuestionPane;
 
 
 
@@ -52,14 +53,14 @@ public class ResetPasswordScreen extends Screen {
         
     
         // Enter Button
-        // TODO for now it just navs to next screen but need to add check for username in db which will retrieve security question
-        subPane.add(EnterBtn.EnterButton(
+       subPane.add(EnterBtn.EnterButton(
             e -> {
                 try {
                 TextField usernameTextField = (TextField) (usernameField.getChildren().get(1));
                 Map<String, String> securityInfo =  new UserDatabase().retrieveSecurityInfo(usernameTextField.getText());
-                stage.setScene(new SecurityQuestionScreen(securityInfo.get("question"), securityInfo.get("Answer")).createScreen(stage));
-               } catch (SQLException err){
+                pane.getChildren().remove(subPane);
+                pane.add(new SecurityQuestionPane(securityInfo.get("question"), securityInfo.get("answer"), stage).createComponent(), 0, 3);
+                } catch (SQLException err){
                 err.printStackTrace();
                }
             }

@@ -56,4 +56,8 @@ public class UserDatabase extends Database{
         return new ResultSetParser(result).parseToStringDict(new String[] {"question", "answer"})[0];
     }
 
+    public void changePassword(String username, String password) throws SQLException{
+        super.updateQuery("UPDATE users SET password=? WHERE username=?", new Object[] {password, username}, new Object[] {String.class, String.class});
+    }
+
 }   
