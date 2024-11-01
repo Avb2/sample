@@ -15,8 +15,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import org.com.functionality.registration.RegisterFunctionality;
-import org.com.functionality.login.LoginFunctionality;
+import org.com.functionality.registration.Register;
+import org.com.functionality.login.Login;
 import org.com.db.UserDatabase;
 
 public class RegisterScreen extends Screen{
@@ -84,25 +84,7 @@ public class RegisterScreen extends Screen{
 
 
         pane.add(EnterBtn.EnterButton(e -> {
-            // Create account
-            String[] valid = RegisterFunctionality.validateRegistrationForm(new GridPane[] {firstNameField, lastNameField, addressField, zipcodeField, stateField, usernameField, passwordField, emailField, ssnField, securityQuestion, securityAnswer});
-
-            
-            System.out.println(valid); 
-            
-            // IF account creation success
-            if (valid.length == 11){
-                try{
-                    UserDatabase userDb = new UserDatabase();
-                    // Error occurring here OCT 30 12:17 at night 
-    
-                    userDb.registerUser(valid);
-                    LoginFunctionality.login(usernameField, passwordField, stage);
-                } catch (SQLException err){
-                    err.printStackTrace();
-                }
-               
-            }
+            Register.createAccount(firstNameField, lastNameField, addressField, zipcodeField, stateField, usernameField, passwordField, emailField, ssnField, securityQuestion, securityAnswer, stage);
         }), 0, 5, 2, 1);
         
         return new Scene(pane, 600, 450);

@@ -45,9 +45,9 @@ public class UserDatabase extends Database{
 
     public void registerUser(Object[] info) throws SQLException{
         super.updateQuery(
-            "INSERT INTO Users(firstname, lastname, address, zipcode, state, username, password, email, ssn, question, answer) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+            "INSERT INTO Users(firstname, lastname, address, zipcode, state, username, password, email, ssn, question, answer, type) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
             info,
-            new Object[] {String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class}
+            new Object[] {String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class}
             );
     }
 
@@ -57,6 +57,7 @@ public class UserDatabase extends Database{
     }
 
     public void changePassword(String username, String password) throws SQLException{
+        System.out.println(username + "  " + password);
         super.updateQuery("UPDATE Users SET password=? WHERE username=?", new Object[] {password, username}, new Object[] {String.class, String.class});
     }
 

@@ -6,7 +6,6 @@ import javafx.scene.control.Button;
 
 
 
-// TODO add lambda for enter functionality
 public class EnterBtn {
     public static Button EnterButton(EventHandler<ActionEvent> event){
         Button button = new Button("Enter");

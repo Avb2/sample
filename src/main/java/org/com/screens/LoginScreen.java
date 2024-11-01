@@ -22,7 +22,7 @@ import org.com.components.MainMenuBtn;
 import org.com.constants.Sizes;
 import org.com.state.UserState;
 import org.com.db.UserDatabase;
-import org.com.functionality.login.LoginFunctionality;
+import org.com.functionality.login.Login;
 
 public class LoginScreen extends Screen {
     @Override
@@ -54,7 +54,7 @@ public class LoginScreen extends Screen {
 
         // Login Button
         subPane.add(EnterBtn.EnterButton(e -> {
-            LoginFunctionality.login(usernameFieldPane, passwordFieldPane, stage);
+            Login.login(usernameFieldPane, passwordFieldPane, stage);
         }), 0, 2);
 
         // Reset Password Button

@@ -12,7 +12,7 @@ import org.com.db.UserDatabase;
 import java.sql.SQLException;
 
 
-public class LoginFunctionality {
+public class Login {
     public static void login(GridPane usernameFieldPane, GridPane passwordFieldPane, Stage stage){
         UserDatabase conn = new UserDatabase();
             // Extract textfields from gridpanes

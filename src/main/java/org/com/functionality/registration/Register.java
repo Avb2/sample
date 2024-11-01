@@ -5,7 +5,10 @@ import javafx.scene.control.TextField;
 import org.com.components.InputField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.Node;
-
+import javafx.stage.Stage;
+import org.com.db.UserDatabase;
+import org.com.functionality.login.Login;
+import java.sql.SQLException;
 
 
 @FunctionalInterface
@@ -14,25 +17,47 @@ interface Validator {
 }
 
 
-public class RegisterFunctionality {
+public class Register {
+    public static void createAccount(GridPane firstNameField, GridPane lastNameField, GridPane addressField, GridPane zipcodeField, GridPane stateField, GridPane usernameField, GridPane passwordField, GridPane emailField, GridPane ssnField, GridPane securityQuestion, GridPane securityAnswer, Stage stage){
+        // Create account
+        String[] valid = Register.validateRegistrationForm(new GridPane[] {firstNameField, lastNameField, addressField, zipcodeField, stateField, usernameField, passwordField, emailField, ssnField, securityQuestion, securityAnswer});
+
+        
+        // If account creation success
+        if (valid.length > 0){
+            try{
+                UserDatabase userDb = new UserDatabase(); 
+                valid[11] = "user";
+                // Register the user
+                userDb.registerUser(valid);
+                // Login the user and push to homepage
+                Login.login(usernameField, passwordField, stage);
+            } catch (SQLException err){
+                err.printStackTrace();
+            }
+           
+        }
+    }
+
+
     public static String[] validateRegistrationForm(GridPane[] fields){
 
         Validator[] validators = {
-            RegisterFunctionality::validateName, 
-            RegisterFunctionality::validateName,
-            RegisterFunctionality::validateAddress,
-            RegisterFunctionality::validateZipcode,
-            RegisterFunctionality::validateState,
-            RegisterFunctionality::validateUsername,
-            RegisterFunctionality::validatePassword,
-            RegisterFunctionality::validateEmail, 
-            RegisterFunctionality::validateSSN,
-            RegisterFunctionality::validateQuestion,
-            RegisterFunctionality::validateQuestion
+            Register::validateName, 
+            Register::validateName,
+            Register::validateAddress,
+            Register::validateZipcode,
+            Register::validateState,
+            Register::validateUsername,
+            Register::validatePassword,
+            Register::validateEmail, 
+            Register::validateSSN,
+            Register::validateQuestion,
+            Register::validateQuestion
         };
         
 
-        String[] info = new String[fields.length];
+        String[] info = new String[fields.length + 1];
 
 
 
@@ -125,5 +150,9 @@ public class RegisterFunctionality {
         return  !string.isEmpty();
     }
     
+
+    public static boolean validateType(String type){
+        return type.matches("(user|admin)");
+    }
     
 }

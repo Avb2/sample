@@ -7,6 +7,7 @@ import org.com.components.EnterBtn;
 import org.com.components.InputField;
 import org.com.components.MainMenuBtn;
 import org.com.db.UserDatabase;
+import org.com.functionality.resetPassword.ResetPassword;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -17,6 +18,8 @@ import java.sql.SQLException;
 import java.util.Map;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
+import org.com.screens.LoginScreen;
+
 
 
 
@@ -24,10 +27,12 @@ public class SecurityQuestionPane extends Component{
     private final String question;
     private final String answer;
     private final Stage stage;
+    private final String username;
 
-    public SecurityQuestionPane(String question, String answer, Stage stage){
+    public SecurityQuestionPane(String question, String answer, String username, Stage stage){
         this.question = question;
         this.answer = answer;
+        this.username = username;
         this.stage = stage;
     }
     @Override 
@@ -47,27 +52,7 @@ public class SecurityQuestionPane extends Component{
 
         // Enter Button
         pane.add(EnterBtn.EnterButton(e -> {
-            TextField answerTextField = (TextField) (answerPane.getChildren().get(1));
-            if (answerTextField.getText().equals(this.answer)){
-                pane.getChildren().clear();
-                
-                // New password/ confirm fields
-                GridPane newPasswordPane = InputField.inputField("New password");
-                pane.add(newPasswordPane, 0, 0);
-                GridPane confirmPasswordPane = InputField.inputField("Confirm password");
-                pane.add(confirmPasswordPane, 0 , 1);
-
-                pane.add(EnterBtn.EnterButton(lam -> {
-                    TextField newPasswordTextField = (TextField) (newPasswordPane.getChildren().get(1));
-                    TextField confirmPasswordTextField = (TextField) (confirmPasswordPane.getChildren().get(1));
-                    try{
-                        new UserDatabase().changePassword(newPasswordTextField.getText(), confirmPasswordTextField.getText());
-                    } catch (SQLException err){
-                        err.printStackTrace();
-                    }
-                    }), 0, 2);
-
-            }
+            ResetPassword.answerSecurityQuestion(this.username, this.answer, answerPane, pane, this.stage);
         }), 0, 2);
         return pane;
     }

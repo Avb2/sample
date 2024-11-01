@@ -1,13 +1,12 @@
-org/com/functionality/login/LoginFunctionality.class
 org/com/screens/ResetPasswordScreen.class
 org/com/bases/Database.class
 org/com/db/parser/ResultSetParser.class
 org/com/components/AuthenticatedNavBar.class
+org/com/functionality/registration/Register.class
 org/com/bases/Screen.class
 org/com/screens/LoginScreen.class
 org/com/state/UserState.class
 org/com/components/MainMenuBtn.class
-org/com/functionality/registration/RegisterFunctionality.class
 module-info.class
 org/com/constants/Sizes.class
 org/com/screens/RegisterScreen.class
@@ -15,8 +14,8 @@ org/com/screens/SplashScreen.class
 org/com/db/BookingDatabase.class
 org/com/db/FlightDatabase.class
 org/com/components/LogOutBtn.class
+org/com/functionality/login/Login.class
 org/com/SystemInfo.class
-org/com/functionality/resetPassword/ResetPasswordFunctionality.class
 org/com/components/InputField.class
 org/com/db/UserDatabase.class
 org/com/components/ManageFlightsButton.class
@@ -26,5 +25,6 @@ org/com/components/FlightCard.class
 org/com/components/EnterBtn.class
 org/com/components/SecurityQuestionPane.class
 org/com/screens/ManageFlights.class
+org/com/functionality/resetPassword/ResetPassword.class
 org/com/bases/Component.class
 org/com/App.class

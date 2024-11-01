@@ -21,8 +21,6 @@ import org.com.components.SecurityQuestionPane;
 
 
 public class ResetPasswordScreen extends Screen {
-    
-
 
     @Override
     public Scene createScreen(Stage stage){
@@ -57,9 +55,10 @@ public class ResetPasswordScreen extends Screen {
             e -> {
                 try {
                 TextField usernameTextField = (TextField) (usernameField.getChildren().get(1));
-                Map<String, String> securityInfo =  new UserDatabase().retrieveSecurityInfo(usernameTextField.getText());
+                String username = usernameTextField.getText();
+                Map<String, String> securityInfo =  new UserDatabase().retrieveSecurityInfo(username);
                 pane.getChildren().remove(subPane);
-                pane.add(new SecurityQuestionPane(securityInfo.get("question"), securityInfo.get("answer"), stage).createComponent(), 0, 3);
+                pane.add(new SecurityQuestionPane(securityInfo.get("question"), securityInfo.get("answer"), username, stage).createComponent(), 0, 3);
                 } catch (SQLException err){
                 err.printStackTrace();
                }

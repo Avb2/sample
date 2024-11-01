@@ -69,8 +69,8 @@ public class ManageFlights extends Screen{
             final int index = i;
             // Create a booking
             addBtn.setOnAction(e -> {
-                Object[] vals = new Object[] {this.userState.getUid(),flightData[index].get(keys[0])};
-                Object[] types = new Object[] {Integer.class, String.class};
+                Object[] vals = new Object[] {this.userState.getUid(),Integer.parseInt(flightData[index].get(keys[0]))};
+                Object[] types = new Object[] {Integer.class, Integer.class};
                 new BookingDatabase().createBooking(vals, types);
                 });
             tempPane.add(addBtn, 1,0);
