@@ -2,13 +2,16 @@ org/com/screens/ResetPasswordScreen.class
 org/com/bases/Database.class
 org/com/db/parser/ResultSetParser.class
 org/com/components/AuthenticatedNavBar.class
+org/com/components/EditFlightsBtn.class
 org/com/functionality/registration/Register.class
 org/com/bases/Screen.class
 org/com/screens/LoginScreen.class
 org/com/state/UserState.class
 org/com/components/MainMenuBtn.class
 module-info.class
+org/com/components/AdminNavBar.class
 org/com/constants/Sizes.class
+org/com/screens/AdminHomeScreen.class
 org/com/screens/RegisterScreen.class
 org/com/screens/SplashScreen.class
 org/com/db/BookingDatabase.class

@@ -9,7 +9,9 @@
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/MainMenuBtn.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/LogOutBtn.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/bases/Screen.java
+/Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/screens/AdminHomeScreen.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/module-info.java
+/Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/AdminNavBar.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/screens/LoginScreen.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/functionality/registration/Register.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/constants/Sizes.java
@@ -19,6 +21,7 @@
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/db/UserDatabase.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/bases/Component.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/screens/SplashScreen.java
+/Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/EditFlightsBtn.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/EnterBtn.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/AuthenticatedNavBar.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/FlightCard.java

@@ -14,10 +14,10 @@ import org.com.bases.Database;
 public class UserDatabase extends Database{
 
     public Map<String, Object>[] retrieveAllInfo (String username) throws SQLException{
-        ResultSet result = super.query("SELECT id, firstname, lastname FROM Users WHERE username=?", new String[] {username});
+        ResultSet result = super.query("SELECT id, firstname, lastname, type FROM Users WHERE username=?", new String[] {username});
         
         
-        return new ResultSetParser(result).parse(new String[] {"id", "firstname", "lastname"}, new Class<?>[] {Integer.class, String.class, String.class});
+        return new ResultSetParser(result).parse(new String[] {"id", "firstname", "lastname", "type"}, new Class<?>[] {Integer.class, String.class, String.class, String.class});
     }
 
     public Map<String, String>[] retrieveName(String username) throws SQLException{
@@ -26,7 +26,7 @@ public class UserDatabase extends Database{
          return new ResultSetParser(result).parseToStringDict(new String[] {"firstname", "lastname"});
      }
  
-    public Boolean validateUsername(String username, String password) throws SQLException{
+    public boolean validateUsername(String username, String password) throws SQLException{
         // Query db using username and password
         ResultSet rs = super.query("SELECT id FROM Users WHERE username=? AND password=?", new String[]{username, password});
 
@@ -61,4 +61,16 @@ public class UserDatabase extends Database{
         super.updateQuery("UPDATE Users SET password=? WHERE username=?", new Object[] {password, username}, new Object[] {String.class, String.class});
     }
 
-}   
+    public boolean validateType(String username) throws SQLException{
+        ResultSet rs = super.query("SELECT type FROM Users WHERE username=?", new String[] {username});
+        String[] keys = new String[]{"type"};
+        Map<String, String> typeDict = new ResultSetParser(rs).parseToStringDict(keys)[0];
+
+        if (typeDict.get(keys[0]).matches("admin")){
+            return true;
+        } 
+        return false;
+
+    }
+
+}       

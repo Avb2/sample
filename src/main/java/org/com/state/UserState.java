@@ -13,6 +13,7 @@ public class UserState {
     private boolean loggedIn;
     private int uid;
     private String username;
+    private String permissions;
 
 
 
@@ -39,6 +40,10 @@ public class UserState {
         return this.username;
     }
 
+    public String getPermissions(){
+        return this.permissions;
+    }
+
     // Setters
     private void setLoggedInStatePriv(){
         this.loggedIn = !this.loggedIn;
@@ -56,14 +61,16 @@ public class UserState {
         this.uid = uid;
     }
 
-
     private void setUsernamePriv(String username){
         this.username = username;
     }
 
-    // Methods
-
+    private void setPermissions(String perms){
+        this.permissions = perms;
+    }
     
+    
+    // Methods
     public void setName(String firstName, String lastName){
         if (this.loggedIn == true){
             setFirstNamePriv(firstName);
@@ -80,10 +87,8 @@ public class UserState {
         // Get all of the user information from the database with the corresponding username
         Map<String, Object>[] userInfo = userdb.retrieveAllInfo(username);
 
-     
         // Set logged in state
         this.setLoggedInState();
-
 
         // Set name in UserState
         this.setName((String) (userInfo[0].get("firstname")), (String) (userInfo[0].get("lastname")));
@@ -93,6 +98,9 @@ public class UserState {
 
         // Set username
         this.setUsernamePriv(username);
+
+        // set permissions
+        this.setPermissions((String) (userInfo[0]).get("type"));
     }
 
     public void logout(){

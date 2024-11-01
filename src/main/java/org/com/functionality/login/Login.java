@@ -10,7 +10,8 @@ import org.com.screens.HomeScreen;
 import org.com.db.UserDatabase;
 
 import java.sql.SQLException;
-
+import org.com.screens.AdminHomeScreen;
+import org.com.db.UserDatabase;
 
 public class Login {
     public static void login(GridPane usernameFieldPane, GridPane passwordFieldPane, Stage stage){
@@ -29,22 +30,54 @@ public class Login {
 
                 // Login user if auth was successful
                 if (validUser == true) {
+
+
                     // Create user state
                     UserState userState = new UserState();
-                    
                     // Update user state and status within User State
                     userState.login(conn, username);
+
+
+                    // If the user is an admin
+                    if (Login.validateAdmin(username)){
+                        stage.setScene(new AdminHomeScreen(userState).createScreen(stage));
+                    } else {
+                        // Push to main logged in screen
+                        stage.setScene(new HomeScreen(userState).createScreen(stage));
+                    }
+
+
+
+                    
                    
                 
 
-                    // Push to main logged in screen
-                    stage.setScene(new HomeScreen(userState).createScreen(stage));
+                    
                 } else {
                     System.out.println("Failed to validate user");
                 }
             } catch (SQLException error) {
                 error.printStackTrace();
             }
+
+    }
+
+    //  Returns true if admin account/ false if user account
+    public static boolean validateUserType(String username){
+        if (username.matches("^admin_.*")){
+            return true;
+        }
+        return false;
+
+    }
+
+
+    public static boolean validateAdmin(String username) throws SQLException{
+        if (Login.validateUserType(username)){
+            UserDatabase userDb = new UserDatabase();
+            return userDb.validateType(username);
+        }
+        return false;
 
     }
 }
