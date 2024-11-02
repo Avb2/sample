@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.Map;
 
 import org.com.bases.Screen;
-import org.com.components.AuthenticatedNavBar;
+import org.com.components.navbars.AuthenticatedNavBar;
 import org.com.state.UserState;
 import org.com.db.FlightDatabase;
 import org.com.components.FlightCard;

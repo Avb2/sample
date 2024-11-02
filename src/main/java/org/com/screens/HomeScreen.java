@@ -1,7 +1,7 @@
 package org.com.screens;
 
 import org.com.bases.Screen;
-import org.com.components.AuthenticatedNavBar;
+import org.com.components.navbars.AuthenticatedNavBar;
 import org.com.state.UserState;
 import org.com.components.FlightCard;
 

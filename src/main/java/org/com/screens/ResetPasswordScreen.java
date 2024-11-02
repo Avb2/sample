@@ -16,7 +16,7 @@ import org.com.db.UserDatabase;
 
 import java.sql.SQLException;
 import java.util.Map;
-import org.com.components.SecurityQuestionPane;
+import org.com.components.panes.SecurityQuestionPane;
 
 
 

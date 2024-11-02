@@ -1,4 +1,4 @@
-package org.com.components;
+package org.com.components.panes;
 
 import org.com.bases.Component;
 
