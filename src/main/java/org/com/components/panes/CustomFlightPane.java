@@ -12,8 +12,6 @@ import org.com.functionality.navigation.PushEditFlight;
 import org.com.components.buttons.BackToEditFlightsBtn;
 
 
-
-
 public class CustomFlightPane extends Component{
     private UserState userState;
     private Stage stage;
@@ -55,8 +53,11 @@ public class CustomFlightPane extends Component{
         GridPane statusField = InputField.inputField("Current Status");
         pane.add(statusField, 0, 7);
 
-        EnterBtn.EnterButton(e -> {this.onAction.run();});
+        Button enterBtn = EnterBtn.EnterButton(e -> {this.onAction.run();});
+        pane.add(enterBtn, 0, 8);
+
     
     return pane;
     }
 }
+

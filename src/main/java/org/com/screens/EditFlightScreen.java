@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import javafx.geometry.Pos;
 import org.com.components.panes.CustomFlightPane;
 import org.com.components.panes.EditFlightPane;
-
+import org.com.functionality.modify_flights.DeleteFlight;;
 
 public class EditFlightScreen extends Screen{
     private UserState userState;
@@ -39,11 +39,15 @@ public class EditFlightScreen extends Screen{
         Button editBtn = new Button("Edit");
         editBtn.setOnAction(e -> {
             pane.getChildren().clear();
-            pane.add(new EditFlightPane(userState, stage).createComponent(), 0, 1);
+            pane.add(new EditFlightPane(userState, stage, DeleteFlight::delete).createComponent(), 0, 1);
         });
         pane.add(editBtn, 0, 2);
 
         Button deleteBtn = new Button("Delete");
+        deleteBtn.setOnAction(e -> {
+            pane.getChildren().clear();
+            pane.add(new EditFlightPane(userState, stage, DeleteFlight::delete).createComponent(), 0, 1);
+        });
         pane.add(deleteBtn, 0, 3);
 
 

@@ -30,9 +30,11 @@
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/screens/SplashScreen.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/EditFlightsBtn.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/EnterBtn.java
+/Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/functionality/modify_flights/DeleteFlight.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/FlightCard.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/db/parser/ResultSetParser.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/App.java
+/Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/buttons/ModifyFlightsBtn.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/state/UserState.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/panes/SecurityQuestionPane.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/db/BookingDatabase.java

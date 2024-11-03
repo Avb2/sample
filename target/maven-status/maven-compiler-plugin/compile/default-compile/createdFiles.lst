@@ -23,6 +23,8 @@ org/com/db/BookingDatabase.class
 org/com/db/FlightDatabase.class
 org/com/components/LogOutBtn.class
 org/com/functionality/login/Login.class
+org/com/components/buttons/ModifyFlightsBtn.class
+org/com/functionality/modify_flights/DeleteFlight.class
 org/com/components/navbars/AdminNavBar.class
 org/com/SystemInfo.class
 org/com/components/InputField.class
