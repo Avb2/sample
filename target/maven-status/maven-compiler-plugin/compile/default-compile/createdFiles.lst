@@ -7,6 +7,7 @@ org/com/functionality/registration/Register.class
 org/com/bases/Screen.class
 org/com/components/panes/EditFlightPane.class
 org/com/screens/LoginScreen.class
+org/com/functionality/interfaces/ModifyFlightsInterface.class
 org/com/bases/Navigate.class
 org/com/state/UserState.class
 org/com/components/MainMenuBtn.class
@@ -25,6 +26,7 @@ org/com/components/LogOutBtn.class
 org/com/functionality/login/Login.class
 org/com/components/buttons/ModifyFlightsBtn.class
 org/com/functionality/modify_flights/DeleteFlight.class
+org/com/animations/Fade.class
 org/com/components/navbars/AdminNavBar.class
 org/com/SystemInfo.class
 org/com/components/InputField.class

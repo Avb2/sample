@@ -12,6 +12,7 @@ import org.com.functionality.navigation.PushEditFlight;
 import org.com.components.buttons.BackToEditFlightsBtn;
 import java.util.function.Consumer;
 import javafx.scene.control.TextField;
+import org.com.functionality.interfaces.ModifyFlightsInterface;
 
 
 
@@ -20,12 +21,12 @@ import javafx.scene.control.TextField;
 public class EditFlightPane extends Component{
     private UserState userState;
     private Stage stage;
-    private Consumer<String> consumer;
+    public ModifyFlightsInterface modifyFlightInterface;
 
-    public EditFlightPane(UserState userState, Stage stage, Consumer<String> consumer){
+    public EditFlightPane(UserState userState, Stage stage, ModifyFlightsInterface modifyFlightInterface){
         this.userState = userState;
         this.stage = stage;
-        this.consumer = consumer;
+        this.modifyFlightInterface = modifyFlightInterface;
     }
 
 
@@ -43,9 +44,9 @@ public class EditFlightPane extends Component{
       
         Button enterBtn = EnterBtn.EnterButton(e -> {
             TextField textField = (TextField) (flightNumberField.getChildren().get(1));
-            this.consumer.accept(textField.getText());
+            this.modifyFlightInterface.onClick(pane, flightNumberField);
         });
-        pane.add(enterBtn, 0, 2);
+        pane.add(enterBtn, 0, 4);
     
         return pane;
     }
@@ -60,14 +61,18 @@ public class EditFlightPane extends Component{
         GridPane flightNumberField = InputField.inputField("Flight Number");
         pane.add(flightNumberField, 0, 1);
         
-      
-        Button enterBtn = EnterBtn.EnterButton(e -> {
-            TextField textField = (TextField) (flightNumberField.getChildren().get(1));
-            this.consumer.accept(textField.getText());
-            pane.getChildren().clear();
-            pane.add(newPane, 0, 1);
-        });
-        pane.add(enterBtn, 0, 2);
+
+
+        Button enterBtn = EnterBtn.EnterButton(
+            e -> this.modifyFlightInterface.onClick(pane, flightNumberField)
+        );
+        // Button enterBtn = EnterBtn.EnterButton(e -> {
+        //     TextField textField = (TextField) (flightNumberField.getChildren().get(1));
+        //     this.consumer.accept(textField.getText());
+        //     pane.getChildren().clear();
+        //     pane.add(newPane, 0, 1);
+        // });
+        pane.add(enterBtn, 0, 4);
     
         return pane;
     }

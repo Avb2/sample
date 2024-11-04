@@ -8,7 +8,7 @@ import org.com.state.UserState;
 import javafx.scene.Node;
 import java.util.function.Consumer;
 import org.com.components.panes.EditFlightPane;
-
+import org.com.functionality.interfaces.ModifyFlightsInterface;
 
 public class ModifyFlightsBtn extends Component{
     private UserState userState;
@@ -17,10 +17,10 @@ public class ModifyFlightsBtn extends Component{
     private String label;
     private int xPos;
     private int yPos;
-    private Consumer<String> consumer;
+    private ModifyFlightsInterface consumer;
     
 
-    public ModifyFlightsBtn(UserState userState, Stage stage, String label, int xPos, int yPos, Consumer consumer){
+    public ModifyFlightsBtn(UserState userState, Stage stage, String label, int xPos, int yPos, ModifyFlightsInterface consumer){
         this.userState = userState;
         this.stage = stage;
         this.pane = pane;

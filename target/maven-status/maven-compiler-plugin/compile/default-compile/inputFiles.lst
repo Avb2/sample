@@ -17,6 +17,7 @@
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/module-info.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/functionality/navigation/PushEditFlight.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/screens/LoginScreen.java
+/Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/functionality/interfaces/ModifyFlightsInterface.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/panes/CustomFlightPane.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/functionality/registration/Register.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/constants/Sizes.java
@@ -34,6 +35,7 @@
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/FlightCard.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/db/parser/ResultSetParser.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/App.java
+/Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/animations/Fade.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/buttons/ModifyFlightsBtn.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/state/UserState.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/panes/SecurityQuestionPane.java
