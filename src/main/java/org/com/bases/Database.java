@@ -136,6 +136,7 @@ public abstract class Database {
 
       // Update db
       public void updateQuery(String query, Object[] args, Object[] types){
+        System.out.println(args.length);
         // Connect to the database
         Connection conn = connect();
 

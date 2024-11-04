@@ -1,9 +1,13 @@
 package org.com.db;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 import org.com.bases.Database;
+
+import org.com.models.Flight;
 
 
 public class FlightDatabase extends Database {
@@ -19,5 +23,23 @@ public class FlightDatabase extends Database {
             new Object[] {Integer.class}
         );
     }
+
+
+    public void addFlight(Flight flight) throws SQLException{
+        
+
+            for (Object i: new Object[] {flight.getDestination(), flight.getDepartureLocation(), Integer.parseInt(flight.getCapacity()), 0, Timestamp.valueOf(flight.getTakeoffTime()), Timestamp.valueOf(flight.getLandingTime()), Date.valueOf(flight.getFlightDate()), flight.getStatus()}){
+                System.out.println(i);
+            }
+
+            super.updateQuery(
+            "INSERT INTO Flights (destination, departurelocation, capacity, currentcapacity, takeoff, landing, date, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+            new Object[] {flight.getDestination(), flight.getDepartureLocation(), Integer.parseInt(flight.getCapacity()), 0, Timestamp.valueOf(flight.getTakeoffTime()), Timestamp.valueOf(flight.getLandingTime()), Date.valueOf(flight.getFlightDate()), flight.getStatus()},
+            new Object[] {String.class, String.class, Integer.class, Integer.class, Timestamp.class, Timestamp.class, Date.class, String.class}
+        );
+    }
+
+
+
 
 }   

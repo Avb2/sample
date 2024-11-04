@@ -5,10 +5,10 @@ import javafx.util.Duration;
 import javafx.scene.Node;
 
 
-public class Fade {
+public class Animate {
     private Node node; 
 
-    public Fade(Node node){
+    public Animate(Node node){
         this.node = node;
     }
 

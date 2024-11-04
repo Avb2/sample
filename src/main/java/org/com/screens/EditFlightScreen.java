@@ -16,10 +16,11 @@ import org.com.functionality.modify_flights.DeleteFlight;
 import org.com.db.FlightDatabase;
 import javafx.scene.control.TextField;
 
+import org.com.functionality.interfaces.CreateFlightsInterface;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 import java.sql.SQLException;
-import org.com.animations.Fade;
+import org.com.animations.Animate;
 
 
 public class EditFlightScreen extends Screen{
@@ -41,7 +42,25 @@ public class EditFlightScreen extends Screen{
         Button addBtn = new Button("Add");
         addBtn.setOnAction(e -> {
             pane.getChildren().clear();
-            pane.add(new CustomFlightPane(userState, stage, () -> {}).createComponent(), 0, 1);
+
+            CreateFlightsInterface createFlightsInterface = (gPane, flight) -> {
+
+                try {
+                      // Add data to db 
+                    new FlightDatabase().addFlight(flight);
+
+                    // Added label
+                    Label addedLabel = new Label("Succesffully added");
+                    gPane.add(addedLabel, 0 , 8);
+                    new Animate(addedLabel).fade(3);
+                } catch (SQLException se) {
+                
+                }
+              
+
+            };
+
+            pane.add(new CustomFlightPane(userState, stage, createFlightsInterface).createComponent(), 0, 1);
         });
         pane.add(addBtn, 0, 1);
 
@@ -76,7 +95,7 @@ public class EditFlightScreen extends Screen{
                     gPane.add(successLabel, 0, 3);
 
                     //
-                   new Fade(successLabel).fade(3);
+                   new Animate(successLabel).fade(3);
                 
                 } catch (SQLException error) {
                     String failText = "Failed ";
@@ -84,7 +103,7 @@ public class EditFlightScreen extends Screen{
                     gPane.add(failLabel, 0, 3);
 
                     //
-                    new Fade(failLabel).fade(3);
+                    new Animate(failLabel).fade(3);
 
                    
                 }

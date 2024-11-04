@@ -7,17 +7,23 @@ import org.com.bases.Component;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import org.com.functionality.interfaces.CreateFlightsInterface;
+
 import org.com.state.UserState;
 import org.com.functionality.navigation.PushEditFlight;
 import org.com.components.buttons.BackToEditFlightsBtn;
+import org.com.functionality.interfaces.CreateFlightsInterface;
+import javafx.scene.control.TextField;
+import org.com.models.Flight;
+
 
 
 public class CustomFlightPane extends Component{
     private UserState userState;
     private Stage stage;
-    Runnable onAction;
+    CreateFlightsInterface onAction;
 
-    public CustomFlightPane(UserState userState, Stage stage, Runnable onAction){
+    public CustomFlightPane(UserState userState, Stage stage, CreateFlightsInterface onAction){
         this.userState = userState;
         this.stage = stage;
         this.onAction = onAction;
@@ -53,8 +59,33 @@ public class CustomFlightPane extends Component{
         GridPane statusField = InputField.inputField("Current Status");
         pane.add(statusField, 0, 7);
 
-        Button enterBtn = EnterBtn.EnterButton(e -> {this.onAction.run();});
-        pane.add(enterBtn, 0, 8);
+        
+
+        Button enterBtn = EnterBtn.EnterButton(e -> {
+            // Get strings
+            TextField destinationFieldText = (TextField) (destinationField.getChildren().get(1));
+            TextField departureFieldText = (TextField) (departureField.getChildren().get(1));
+            TextField capacityFieldText = (TextField) (capacityField.getChildren().get(1));
+            TextField takeoffFieldText = (TextField) (takeoffField.getChildren().get(1));
+            TextField landingFieldText = (TextField) (landingField.getChildren().get(1));
+            TextField dateFieldFieldText = (TextField) (dateField.getChildren().get(1));
+            TextField statusFieldText = (TextField) (statusField.getChildren().get(1));
+
+            // Flight model
+            Flight flight = new Flight(
+                destinationFieldText.getText(),
+                departureFieldText.getText(),
+                capacityFieldText.getText(),
+                takeoffFieldText.getText(),
+                landingFieldText.getText(),
+                dateFieldFieldText.getText(),
+                statusFieldText.getText()
+            );
+
+
+            this.onAction.onClick(pane, flight);
+        });
+        pane.add(enterBtn, 0, 9);
 
     
     return pane;

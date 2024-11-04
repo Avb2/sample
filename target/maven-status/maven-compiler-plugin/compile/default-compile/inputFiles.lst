@@ -1,3 +1,4 @@
+/Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/animations/Animate.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/functionality/resetPassword/ResetPassword.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/screens/EditFlightScreen.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/db/FlightDatabase.java
@@ -8,7 +9,9 @@
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/screens/ManageFlights.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/screens/RegisterScreen.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/bases/Navigate.java
+/Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/models/Flight.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/ManageFlightsButton.java
+/Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/functionality/interfaces/CreateFlightsInterface.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/MainMenuBtn.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/navbars/AdminNavBar.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/LogOutBtn.java
@@ -35,7 +38,6 @@
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/FlightCard.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/db/parser/ResultSetParser.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/App.java
-/Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/animations/Fade.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/buttons/ModifyFlightsBtn.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/state/UserState.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/panes/SecurityQuestionPane.java

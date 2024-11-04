@@ -1,4 +1,5 @@
 org/com/functionality/navigation/PushEditFlight.class
+org/com/functionality/interfaces/CreateFlightsInterface.class
 org/com/screens/ResetPasswordScreen.class
 org/com/bases/Database.class
 org/com/db/parser/ResultSetParser.class
@@ -14,6 +15,7 @@ org/com/components/MainMenuBtn.class
 org/com/screens/EditFlightScreen.class
 org/com/components/panes/CustomFlightPane.class
 module-info.class
+org/com/animations/Animate.class
 org/com/components/buttons/BackToEditFlightsBtn.class
 org/com/components/panes/SecurityQuestionPane.class
 org/com/constants/Sizes.class
@@ -25,8 +27,8 @@ org/com/db/FlightDatabase.class
 org/com/components/LogOutBtn.class
 org/com/functionality/login/Login.class
 org/com/components/buttons/ModifyFlightsBtn.class
+org/com/models/Flight.class
 org/com/functionality/modify_flights/DeleteFlight.class
-org/com/animations/Fade.class
 org/com/components/navbars/AdminNavBar.class
 org/com/SystemInfo.class
 org/com/components/InputField.class
