@@ -18,15 +18,26 @@ import javafx.stage.Stage;
 import org.com.functionality.registration.Register;
 import org.com.functionality.login.Login;
 import org.com.db.UserDatabase;
+import org.com.state.db.Pool;
+import java.sql.Connection;
+
+
 
 public class RegisterScreen extends Screen{
+    private Connection connection;
+
+
+    public RegisterScreen(Connection connection){
+        this.connection = connection;
+    }
+
     public Scene createScreen(Stage stage){
         // Grid pane
         GridPane pane = new GridPane();
         pane.setAlignment(Pos.CENTER);
 
         // main menu
-        pane.add(MainMenuBtn.mainMenuButton(stage), 0 ,0);
+        pane.add(MainMenuBtn.mainMenuButton(this.connection, stage), 0 ,0);
 
 
 
@@ -80,11 +91,11 @@ public class RegisterScreen extends Screen{
         // Security Question
         GridPane securityAnswer = InputField.inputField("Security Answer");
         subpane.add(securityAnswer, 0 ,10);
-
+ 
 
 
         pane.add(EnterBtn.EnterButton(e -> {
-            Register.createAccount(firstNameField, lastNameField, addressField, zipcodeField, stateField, usernameField, passwordField, emailField, ssnField, securityQuestion, securityAnswer, stage);
+            Register.createAccount(this.connection, firstNameField, lastNameField, addressField, zipcodeField, stateField, usernameField, passwordField, emailField, ssnField, securityQuestion, securityAnswer, stage);
         }), 0, 5, 2, 1);
         
         return new Scene(pane, 600, 450);

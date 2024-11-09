@@ -10,12 +10,15 @@ import javafx.geometry.Pos;
 import org.com.constants.Sizes;
 import org.com.components.navbars.AuthenticatedNavBar;
 import org.com.components.navbars.AdminNavBar;
+import java.sql.Connection;
 
 
 public class AdminHomeScreen extends Screen {
+    private Connection connection;
     private final UserState userState;
 
-    public AdminHomeScreen(UserState userState) {
+    public AdminHomeScreen(Connection connection, UserState userState) {
+        this.connection = connection;
         this.userState = userState;
     }
 
@@ -23,7 +26,7 @@ public class AdminHomeScreen extends Screen {
     public Scene createScreen(Stage stage) {
         // Create main pane
         GridPane pane = new GridPane();
-        pane.add(new AdminNavBar(stage, userState).createComponent(), 0, 0);
+        pane.add(new AdminNavBar(stage, userState, this.connection).createComponent(), 0, 0);
 
         return new Scene(pane, 450, 400);
     }

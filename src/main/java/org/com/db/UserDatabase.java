@@ -6,12 +6,18 @@ import javax.xml.transform.Result;
 
 import org.com.db.parser.ResultSetParser;
 import java.util.Map;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.com.bases.Database;
+import java.sql.Connection;
 
 
 public class UserDatabase extends Database{
+    public UserDatabase(Connection connection){
+        super(connection);
+    }
+
 
     public Map<String, Object>[] retrieveAllInfo (String username) throws SQLException{
         ResultSet result = super.query("SELECT id, firstname, lastname, type FROM Users WHERE username=?", new String[] {username});

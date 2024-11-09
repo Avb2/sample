@@ -9,8 +9,11 @@ import javafx.scene.Node;
 import java.util.function.Consumer;
 import org.com.components.panes.EditFlightPane;
 import org.com.functionality.interfaces.ModifyFlightsInterface;
+import java.sql.Connection;
+
 
 public class ModifyFlightsBtn extends Component{
+    private Connection connection;
     private UserState userState;
     private Stage stage;
     private GridPane pane;
@@ -20,7 +23,8 @@ public class ModifyFlightsBtn extends Component{
     private ModifyFlightsInterface consumer;
     
 
-    public ModifyFlightsBtn(UserState userState, Stage stage, String label, int xPos, int yPos, ModifyFlightsInterface consumer){
+    public ModifyFlightsBtn(Connection connection, UserState userState, Stage stage, String label, int xPos, int yPos, ModifyFlightsInterface consumer){
+        this.connection = connection;
         this.userState = userState;
         this.stage = stage;
         this.pane = pane;
@@ -35,7 +39,7 @@ public class ModifyFlightsBtn extends Component{
         Button btn = new Button(this.label);
         btn.setOnAction(e -> {
             this.pane.getChildren().clear();
-            this.pane.add(new EditFlightPane(this.userState, this.stage, this.consumer).createComponent(), this.xPos, this.yPos);
+            this.pane.add(new EditFlightPane(this.connection, this.userState, this.stage, this.consumer).createComponent(), this.xPos, this.yPos);
         });
 
         return btn;

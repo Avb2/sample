@@ -15,15 +15,17 @@ import org.com.components.buttons.BackToEditFlightsBtn;
 import org.com.functionality.interfaces.CreateFlightsInterface;
 import javafx.scene.control.TextField;
 import org.com.models.Flight;
-
+import java.sql.Connection;
 
 
 public class CustomFlightPane extends Component{
+    private Connection connection;
     private UserState userState;
     private Stage stage;
     CreateFlightsInterface onAction;
 
-    public CustomFlightPane(UserState userState, Stage stage, CreateFlightsInterface onAction){
+    public CustomFlightPane(Connection connection, UserState userState, Stage stage, CreateFlightsInterface onAction){
+        this.connection = connection;
         this.userState = userState;
         this.stage = stage;
         this.onAction = onAction;
@@ -34,7 +36,7 @@ public class CustomFlightPane extends Component{
     public Node createComponent(){
         GridPane pane = new GridPane();
 
-        Button backBtn = (Button) (new BackToEditFlightsBtn(userState, stage).createComponent());
+        Button backBtn = (Button) (new BackToEditFlightsBtn(this.connection, this.userState, this.stage).createComponent());
         pane.add(backBtn, 0, 0);
 
         // destination     

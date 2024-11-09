@@ -9,13 +9,16 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
+import java.sql.Connection;
 
 
 public class ManageFlightsButton extends Component{
+    private Connection connection;
     private final Stage stage;
     private UserState userState;
 
-    public ManageFlightsButton(Stage stage, UserState userState){
+    public ManageFlightsButton(Connection connection, Stage stage, UserState userState){
+        this.connection = connection;
         this.stage = stage;
         this.userState = userState;
     }
@@ -26,7 +29,7 @@ public class ManageFlightsButton extends Component{
 
         Button button = new Button("Manage Flights");
         button.setOnAction(e -> {
-            ManageFlights screen = new ManageFlights(this.userState);
+            ManageFlights screen = new ManageFlights(this.connection, this.userState);
             this.stage.setScene(screen.createScreen(this.stage));
         });
 

@@ -23,8 +23,17 @@ import org.com.constants.Sizes;
 import org.com.state.UserState;
 import org.com.db.UserDatabase;
 import org.com.functionality.login.Login;
+import java.sql.Connection;
+
+
 
 public class LoginScreen extends Screen {
+    private Connection connection;
+    
+    public LoginScreen(Connection connection){
+        this.connection = connection;
+    }
+
     @Override
     public Scene createScreen(Stage stage) {
         // Grid
@@ -33,7 +42,7 @@ public class LoginScreen extends Screen {
         pane.setVgap(Sizes.mediumGap);
 
         // Return to Main Menu Button
-        pane.add(MainMenuBtn.mainMenuButton(stage), 0, 0);
+        pane.add(MainMenuBtn.mainMenuButton(this.connection, stage), 0, 0);
 
         // Login title label
         Label loginTitle = new Label("LOGIN");
@@ -54,14 +63,14 @@ public class LoginScreen extends Screen {
 
         // Login Button
         subPane.add(EnterBtn.EnterButton(e -> {
-            Login.login(usernameFieldPane, passwordFieldPane, stage);
+            Login.login(usernameFieldPane, passwordFieldPane, this.connection,  stage);
         }), 0, 2);
 
         // Reset Password Button
         Button resetButton = new Button("Reset Password");
         resetButton.setPrefSize(150, 30);
         resetButton.setStyle("-fx-font-size: 15");
-        resetButton.setOnAction(e -> stage.setScene(new ResetPasswordScreen().createScreen(stage)));
+        resetButton.setOnAction(e -> stage.setScene(new ResetPasswordScreen(this.connection).createScreen(stage)));
         subPane.add(resetButton, 1, 2);
 
         return new Scene(pane, 450, 300);

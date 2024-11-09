@@ -18,9 +18,15 @@ import java.sql.SQLException;
 import java.util.Map;
 import org.com.components.panes.SecurityQuestionPane;
 
+import java.sql.Connection;
 
 
 public class ResetPasswordScreen extends Screen {
+    private Connection connection;
+
+    public ResetPasswordScreen(Connection connection){
+        this.connection = connection;
+    }
 
     @Override
     public Scene createScreen(Stage stage){
@@ -31,7 +37,7 @@ public class ResetPasswordScreen extends Screen {
 
 
         // Main menu Btn
-        pane.add(MainMenuBtn.mainMenuButton(stage), 0, 0);
+        pane.add(MainMenuBtn.mainMenuButton(this.connection, stage), 0, 0);
 
         
         // Reset password label
@@ -56,9 +62,9 @@ public class ResetPasswordScreen extends Screen {
                 try {
                 TextField usernameTextField = (TextField) (usernameField.getChildren().get(1));
                 String username = usernameTextField.getText();
-                Map<String, String> securityInfo =  new UserDatabase().retrieveSecurityInfo(username);
+                Map<String, String> securityInfo =  new UserDatabase(this.connection).retrieveSecurityInfo(username);
                 pane.getChildren().remove(subPane);
-                pane.add(new SecurityQuestionPane(securityInfo.get("question"), securityInfo.get("answer"), username, stage).createComponent(), 0, 3);
+                pane.add(new SecurityQuestionPane(securityInfo.get("question"), securityInfo.get("answer"), username,this.connection, stage).createComponent(), 0, 3);
                 } catch (SQLException err){
                 err.printStackTrace();
                }

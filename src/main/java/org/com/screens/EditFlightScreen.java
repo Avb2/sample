@@ -21,12 +21,14 @@ import javafx.scene.control.Label;
 import javafx.util.Duration;
 import java.sql.SQLException;
 import org.com.animations.Animate;
-
+import java.sql.Connection;
 
 public class EditFlightScreen extends Screen{
     private UserState userState;
+    private Connection connection;
 
-    public EditFlightScreen(UserState userState){
+    public EditFlightScreen(Connection connection, UserState userState){
+        this.connection = connection;
         this.userState = userState;
     }
 
@@ -34,7 +36,7 @@ public class EditFlightScreen extends Screen{
     @Override
     public Scene createScreen(Stage stage) {
         GridPane pane = new GridPane();
-        pane.add(new AdminNavBar(stage, userState).createComponent(), 0, 0);
+        pane.add(new AdminNavBar(stage, this.userState, this.connection).createComponent(), 0, 0);
         pane.setAlignment(Pos.CENTER);
 
 
@@ -47,20 +49,20 @@ public class EditFlightScreen extends Screen{
 
                 try {
                       // Add data to db 
-                    new FlightDatabase().addFlight(flight);
+                    new FlightDatabase(this.connection).addFlight(flight);
 
                     // Added label
                     Label addedLabel = new Label("Succesffully added");
                     gPane.add(addedLabel, 0 , 8);
                     new Animate(addedLabel).fade(3);
                 } catch (SQLException se) {
-                
+                    se.printStackTrace();
                 }
               
 
             };
 
-            pane.add(new CustomFlightPane(userState, stage, createFlightsInterface).createComponent(), 0, 1);
+            pane.add(new CustomFlightPane(this.connection, this.userState, stage, createFlightsInterface).createComponent(), 0, 1);
         });
         pane.add(addBtn, 0, 1);
 
@@ -72,7 +74,7 @@ public class EditFlightScreen extends Screen{
             ModifyFlightsInterface editFlightInterface = (gPane, tField) -> {
                 System.out.println("Modify");
             };
-            pane.add(new EditFlightPane(userState, stage, editFlightInterface).createComponent(), 0, 1);
+            pane.add(new EditFlightPane(this.connection, this.userState, stage, editFlightInterface).createComponent(), 0, 1);
         });
         pane.add(editBtn, 0, 2);
 
@@ -84,7 +86,7 @@ public class EditFlightScreen extends Screen{
             ModifyFlightsInterface deleteFlightInterface = (gPane, tField) -> {
                 TextField textField = (TextField) (tField.getChildren().get(1));
                 String text = textField.getText();
-                FlightDatabase flightDb = new FlightDatabase();
+                FlightDatabase flightDb = new FlightDatabase(this.connection);
 
                 try {
 
@@ -108,7 +110,7 @@ public class EditFlightScreen extends Screen{
                    
                 }
             };
-            pane.add(new EditFlightPane(userState, stage, deleteFlightInterface).createComponent(), 0, 1);
+            pane.add(new EditFlightPane(this.connection, userState, stage, deleteFlightInterface).createComponent(), 0, 1);
         });
         pane.add(deleteBtn, 0, 3);
 

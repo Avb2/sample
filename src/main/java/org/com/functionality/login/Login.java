@@ -12,10 +12,11 @@ import org.com.db.UserDatabase;
 import java.sql.SQLException;
 import org.com.screens.AdminHomeScreen;
 import org.com.db.UserDatabase;
+import java.sql.Connection;
 
 public class Login {
-    public static void login(GridPane usernameFieldPane, GridPane passwordFieldPane, Stage stage){
-        UserDatabase conn = new UserDatabase();
+    public static void login(GridPane usernameFieldPane, GridPane passwordFieldPane, Connection connection, Stage stage){
+        UserDatabase conn = new UserDatabase(connection);
             // Extract textfields from gridpanes
             TextField usernameField = (TextField) (usernameFieldPane.getChildren().get(1));
             TextField passwordField = (TextField) (passwordFieldPane.getChildren().get(1));
@@ -39,11 +40,11 @@ public class Login {
 
 
                     // If the user is an admin
-                    if (Login.validateAdmin(username)){
-                        stage.setScene(new AdminHomeScreen(userState).createScreen(stage));
+                    if (Login.validateAdmin(connection, username)){
+                        stage.setScene(new AdminHomeScreen(connection, userState).createScreen(stage));
                     } else {
                         // Push to main logged in screen
-                        stage.setScene(new HomeScreen(userState).createScreen(stage));
+                        stage.setScene(new HomeScreen(connection, userState).createScreen(stage));
                     }
 
 
@@ -72,9 +73,9 @@ public class Login {
     }
 
 
-    public static boolean validateAdmin(String username) throws SQLException{
+    public static boolean validateAdmin(Connection connection, String username) throws SQLException{
         if (Login.validateUserType(username)){
-            UserDatabase userDb = new UserDatabase();
+            UserDatabase userDb = new UserDatabase(connection);
             return userDb.validateType(username);
         }
         return false;

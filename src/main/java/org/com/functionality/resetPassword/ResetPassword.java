@@ -10,10 +10,12 @@ import javafx.stage.Stage;
 import org.com.screens.LoginScreen;
 import javafx.scene.control.Label;
 import java.sql.SQLException;
+import java.sql.Connection;
+
 
 
 public class ResetPassword {
-    public static void answerSecurityQuestion(String username , String answer, GridPane answerPane, GridPane pane, Stage stage){
+    public static void answerSecurityQuestion(String username , String answer, GridPane answerPane, GridPane pane, Connection connection, Stage stage){
         // Extract the textfield from the grid pane
         TextField answerTextField = (TextField) (answerPane.getChildren().get(1));
             // Check if the inputted answer matches the security answer
@@ -37,8 +39,8 @@ public class ResetPassword {
                     
                     if (newPassword.matches(confirmPassword)){
                         try{
-                            new UserDatabase().changePassword(username, confirmPassword);
-                            stage.setScene(new LoginScreen().createScreen(stage));
+                            new UserDatabase(connection).changePassword(username, confirmPassword);
+                            stage.setScene(new LoginScreen(connection).createScreen(stage));
                         } catch (SQLException err){
                             err.printStackTrace();
                         }

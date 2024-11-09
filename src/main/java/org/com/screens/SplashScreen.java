@@ -10,11 +10,19 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
+import java.sql.Connection;;
 import org.com.bases.Screen;
 import org.com.constants.Sizes;
 
+
 public class SplashScreen extends Screen{
+    private Connection connection;
+
+    public SplashScreen(Connection connection){
+        this.connection = connection;
+    }
+
+    @Override
     public Scene createScreen(Stage stage){
 
         
@@ -51,14 +59,14 @@ public class SplashScreen extends Screen{
         Button loginBtn = new Button("Login");
         loginBtn.setPrefSize(100,30);
         loginBtn.setStyle("-fx-font-size: 15");
-        loginBtn.setOnAction(e -> stage.setScene(new LoginScreen().createScreen(stage)));
+        loginBtn.setOnAction(e -> stage.setScene(new LoginScreen(this.connection).createScreen(stage)));
         subPane.add(loginBtn, 0, 0);
 
 
         Button registerBtn = new Button( "Register");
         registerBtn.setPrefSize(100,30);
         registerBtn.setStyle("-fx-font-size: 15");
-        registerBtn.setOnAction(e -> stage.setScene(new RegisterScreen().createScreen(stage)));
+        registerBtn.setOnAction(e -> stage.setScene(new RegisterScreen(this.connection).createScreen(stage)));
         subPane.add(registerBtn, 0, 1);
 
 

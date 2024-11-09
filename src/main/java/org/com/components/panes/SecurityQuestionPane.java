@@ -19,20 +19,23 @@ import java.util.Map;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import org.com.screens.LoginScreen;
-
+import java.sql.Connection;
 
 
 
 public class SecurityQuestionPane extends Component{
     private final String question;
     private final String answer;
-    private final Stage stage;
     private final String username;
+    private Connection connection;
+    private final Stage stage;
+    
 
-    public SecurityQuestionPane(String question, String answer, String username, Stage stage){
+    public SecurityQuestionPane(String question, String answer, String username, Connection connection, Stage stage){
         this.question = question;
         this.answer = answer;
         this.username = username;
+        this.connection = connection;
         this.stage = stage;
     }
     @Override 
@@ -52,7 +55,7 @@ public class SecurityQuestionPane extends Component{
 
         // Enter Button
         pane.add(EnterBtn.EnterButton(e -> {
-            ResetPassword.answerSecurityQuestion(this.username, this.answer, answerPane, pane, this.stage);
+            ResetPassword.answerSecurityQuestion(this.username, this.answer, answerPane, pane, this.connection, this.stage);
         }), 0, 2);
         return pane;
     }

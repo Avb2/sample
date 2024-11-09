@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import org.com.db.UserDatabase;
 import org.com.functionality.login.Login;
 import java.sql.SQLException;
+import java.sql.Connection;
 
 
 @FunctionalInterface
@@ -18,7 +19,7 @@ interface Validator {
 
 
 public class Register {
-    public static void createAccount(GridPane firstNameField, GridPane lastNameField, GridPane addressField, GridPane zipcodeField, GridPane stateField, GridPane usernameField, GridPane passwordField, GridPane emailField, GridPane ssnField, GridPane securityQuestion, GridPane securityAnswer, Stage stage){
+    public static void createAccount(Connection connection, GridPane firstNameField, GridPane lastNameField, GridPane addressField, GridPane zipcodeField, GridPane stateField, GridPane usernameField, GridPane passwordField, GridPane emailField, GridPane ssnField, GridPane securityQuestion, GridPane securityAnswer, Stage stage){
         // Create account
         String[] valid = Register.validateRegistrationForm(new GridPane[] {firstNameField, lastNameField, addressField, zipcodeField, stateField, usernameField, passwordField, emailField, ssnField, securityQuestion, securityAnswer});
 
@@ -26,12 +27,13 @@ public class Register {
         // If account creation success
         if (valid.length > 0){
             try{
-                UserDatabase userDb = new UserDatabase(); 
+                UserDatabase userDb = new UserDatabase(connection); 
                 valid[11] = "user";
                 // Register the user
                 userDb.registerUser(valid);
                 // Login the user and push to homepage
-                Login.login(usernameField, passwordField, stage);
+                Login.login(
+                    usernameField, passwordField, connection, stage);
             } catch (SQLException err){
                 err.printStackTrace();
             }

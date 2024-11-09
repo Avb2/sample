@@ -13,17 +13,19 @@ import org.com.components.buttons.BackToEditFlightsBtn;
 import java.util.function.Consumer;
 import javafx.scene.control.TextField;
 import org.com.functionality.interfaces.ModifyFlightsInterface;
-
+import java.sql.Connection;
 
 
 
 
 public class EditFlightPane extends Component{
+    private Connection connection;
     private UserState userState;
     private Stage stage;
     public ModifyFlightsInterface modifyFlightInterface;
 
-    public EditFlightPane(UserState userState, Stage stage, ModifyFlightsInterface modifyFlightInterface){
+    public EditFlightPane(Connection connection, UserState userState, Stage stage, ModifyFlightsInterface modifyFlightInterface){
+        this.connection = connection;
         this.userState = userState;
         this.stage = stage;
         this.modifyFlightInterface = modifyFlightInterface;
@@ -34,7 +36,7 @@ public class EditFlightPane extends Component{
     public Node createComponent(){
         GridPane pane = new GridPane();
 
-        Button backBtn = (Button) (new BackToEditFlightsBtn(userState, stage).createComponent());
+        Button backBtn = (Button) (new BackToEditFlightsBtn(this.connection, this.userState, this.stage).createComponent());
         pane.add(backBtn, 0, 0);
 
         // Flight Number field     
@@ -54,7 +56,7 @@ public class EditFlightPane extends Component{
     public Node createComponent(GridPane newPane){
         GridPane pane = new GridPane();
 
-        Button backBtn = (Button) (new BackToEditFlightsBtn(userState, stage).createComponent());
+        Button backBtn = (Button) (new BackToEditFlightsBtn(this.connection, this.userState, this.stage).createComponent());
         pane.add(backBtn, 0, 0);
 
         // Flight Number field     

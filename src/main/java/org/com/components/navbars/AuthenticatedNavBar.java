@@ -15,13 +15,16 @@ import org.com.components.MainMenuBtn;
 import org.com.components.LogOutBtn;
 
 import javafx.scene.Node; 
+import java.sql.Connection;
 
 
 public class AuthenticatedNavBar extends Component{
+    private Connection connection;
     private final Stage stage;
     private UserState userState;
 
-    public AuthenticatedNavBar(Stage stage, UserState userState){
+    public AuthenticatedNavBar(Connection connection, Stage stage, UserState userState){
+        this.connection = connection;
         this.stage = stage;
         this.userState = userState;
     }
@@ -29,16 +32,16 @@ public class AuthenticatedNavBar extends Component{
     @Override
     public Node createComponent(){
         GridPane pane = new GridPane();
-        pane.setAlignment(Pos.CENTER);
+        pane.setAlignment(Pos.TOP_CENTER);
         pane.setHgap(40);
 
         
 
-        pane.add(MainMenuBtn.mainMenuButton(this.stage, this.userState), 0, 0);
+        pane.add(MainMenuBtn.mainMenuButton(this.connection, this.stage, this.userState), 0, 0);
         
-        pane.add(new ManageFlightsButton(this.stage, this.userState).createComponent(), 1, 0);
+        pane.add(new ManageFlightsButton(this.connection, this.stage, this.userState).createComponent(), 1, 0);
         
-        pane.add(LogOutBtn.LogOutButton(this.stage, this.userState), 2, 0);
+        pane.add(LogOutBtn.LogOutButton(this.connection, this.stage, this.userState), 2, 0);
 
         return pane;
 

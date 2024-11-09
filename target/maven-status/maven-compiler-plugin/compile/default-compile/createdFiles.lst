@@ -41,5 +41,6 @@ org/com/components/EnterBtn.class
 org/com/screens/ManageFlights.class
 org/com/functionality/resetPassword/ResetPassword.class
 org/com/bases/Component.class
+org/com/state/db/Pool.class
 org/com/components/navbars/AuthenticatedNavBar.class
 org/com/App.class

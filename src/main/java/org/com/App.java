@@ -10,6 +10,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import org.com.state.db.Pool;
+import java.sql.Connection;
+import java.sql.SQLException;
+
 
 /**
  * JavaFX App
@@ -18,9 +22,15 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
-        Scene scene = new SplashScreen().createScreen(stage);
-        stage.setScene(scene);
-        stage.show();
+        Pool pool = new Pool();
+        Connection connection = pool.returnConnection();
+        if (connection != null){
+            Scene scene = new SplashScreen(connection).createScreen(stage);
+            stage.setScene(scene);
+            stage.show();
+        } else {
+            System.out.println("Error with conn");
+        }
     }
 
     public static void main(String[] args) {

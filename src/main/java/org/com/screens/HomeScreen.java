@@ -23,14 +23,18 @@ import org.com.db.BookingDatabase;
 import java.util.Map;
 
 import org.com.db.parser.ResultSetParser;
+import java.sql.Connection;
 
 
 
 
 public class HomeScreen extends Screen{
+    private Connection connection;
     private UserState userState;
+    
 
-    public HomeScreen(UserState userState){
+    public HomeScreen(Connection connection, UserState userState){
+        this.connection = connection;
         this.userState = userState;
     }
 
@@ -41,7 +45,7 @@ public class HomeScreen extends Screen{
         pane.setVgap(Sizes.largeGap);
         pane.setPadding(new Insets(10,10,10,10));
 
-        pane.add(new AuthenticatedNavBar(stage, this.userState).createComponent(), 0, 0);
+        pane.add(new AuthenticatedNavBar(this.connection, stage, this.userState).createComponent(), 0, 0);
 
         String name = null;
         try {
@@ -67,7 +71,7 @@ public class HomeScreen extends Screen{
 
     
         try{
-            Map<String, String>[] flightData = new ResultSetParser(new BookingDatabase().retrieveBookingByUser(userState.getUid())).parseToStringDict(keys);
+            Map<String, String>[] flightData = new ResultSetParser(new BookingDatabase(this.connection).retrieveBookingByUser(userState.getUid())).parseToStringDict(keys);
                
 
         for (int i = 0; i < flightData.length; i++){
@@ -82,11 +86,15 @@ public class HomeScreen extends Screen{
                 // Remove a booking
                 Button deleteBtn = new Button("-");
                 deleteBtn.setOnAction(e -> {
-                    
-                    new BookingDatabase().removeBooking(this.userState.getUid(), flightData[index].get(keys[0]));
+                    try {
+                        new BookingDatabase(this.connection).removeBooking(this.userState.getUid(), Integer.parseInt(flightData[index].get(keys[0])));
 
-                    tempPane.getChildren().remove(flightCard);
-                    tempPane.getChildren().remove(deleteBtn);
+                        tempPane.getChildren().remove(flightCard);
+                        tempPane.getChildren().remove(deleteBtn);
+                    } catch (SQLException se) {
+                        se.printStackTrace();
+                    }
+                    
                 });
                 tempPane.add(deleteBtn, 1,0);
 
