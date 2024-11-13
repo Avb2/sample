@@ -1,4 +1,4 @@
-package org.com.components;
+package org.com.components.cards;
 
 import org.com.bases.Component;
 import javafx.scene.Node;

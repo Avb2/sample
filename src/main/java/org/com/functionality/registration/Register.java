@@ -10,6 +10,7 @@ import org.com.db.UserDatabase;
 import org.com.functionality.login.Login;
 import java.sql.SQLException;
 import java.sql.Connection;
+import org.com.models.RegistrationAdmin;
 
 
 @FunctionalInterface
@@ -41,9 +42,45 @@ public class Register {
         }
     }
 
+    public static void createAdmin(Connection connection, RegistrationAdmin registrationModel){
+        try {
+            UserDatabase userDb = new UserDatabase(connection); 
+            userDb.registerUser(registrationModel);
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+
+    public static String[] validateAdminAcct(RegistrationAdmin registrationModel){
+        Validator[] validators = {
+            Register::validateName, 
+            Register::validateName,
+            Register::validateEmail, 
+            Register::validateSSN
+        };
+
+        Object[] registrationArray = registrationModel.toArray();
+
+        String[] info = new String[registrationArray.length];
+
+        for (int i = 0; i < registrationArray.length; i++){
+            String val = (String) registrationArray[i];
+            // Check if fields are empty
+            if (val.isEmpty() || !validators[i].validate(val)){
+                System.out.println("FAIL TO VALIDATE "+ " "+ val);
+                return new String[]{};
+            } 
+            info[i] = val;
+            
+        }
+        return info;
+
+
+    }
+
 
     public static String[] validateRegistrationForm(GridPane[] fields){
-
         Validator[] validators = {
             Register::validateName, 
             Register::validateName,
@@ -57,11 +94,8 @@ public class Register {
             Register::validateQuestion,
             Register::validateQuestion
         };
-        
 
         String[] info = new String[fields.length + 1];
-
-
 
         for (int i = 0; i < fields.length; i++){
             System.out.println(fields[i].getChildren().get(0));
@@ -72,13 +106,11 @@ public class Register {
                 return new String[]{};
             } 
             info[i] = textField.getText();
-
-
-
             
         }
         return info;
     }
+
 
     // If name is greater than 2 digits and only contains letters
     public static boolean validateName(String name){

@@ -1,7 +1,7 @@
 package org.com.components.panes;
 
 import javafx.scene.layout.GridPane;
-import org.com.components.EnterBtn;
+import org.com.components.buttons.EnterBtn;
 import org.com.components.InputField;
 import org.com.bases.Component;
 import javafx.scene.Node;
@@ -68,12 +68,6 @@ public class EditFlightPane extends Component{
         Button enterBtn = EnterBtn.EnterButton(
             e -> this.modifyFlightInterface.onClick(pane, flightNumberField)
         );
-        // Button enterBtn = EnterBtn.EnterButton(e -> {
-        //     TextField textField = (TextField) (flightNumberField.getChildren().get(1));
-        //     this.consumer.accept(textField.getText());
-        //     pane.getChildren().clear();
-        //     pane.add(newPane, 0, 1);
-        // });
         pane.add(enterBtn, 0, 4);
     
         return pane;

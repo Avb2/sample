@@ -2,7 +2,7 @@ package org.com.components.navbars;
 
 import org.com.constants.Sizes;
 import org.com.state.UserState;
-import org.com.components.ManageFlightsButton;
+import org.com.components.buttons.ManageFlightsButton;
 import org.com.bases.Component;
 
 import javafx.geometry.Pos;
@@ -11,7 +11,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import org.com.components.MainMenuBtn;
+import org.com.components.buttons.MainMenuBtn;
 import org.com.components.LogOutBtn;
 
 import javafx.scene.Node; 

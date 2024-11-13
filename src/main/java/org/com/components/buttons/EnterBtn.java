@@ -1,4 +1,4 @@
-package org.com.components;
+package org.com.components.buttons;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

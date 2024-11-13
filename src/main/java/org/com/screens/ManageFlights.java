@@ -10,7 +10,7 @@ import org.com.bases.Screen;
 import org.com.components.navbars.AuthenticatedNavBar;
 import org.com.state.UserState;
 import org.com.db.FlightDatabase;
-import org.com.components.FlightCard;
+import org.com.components.cards.FlightCard;
 import org.com.db.parser.ResultSetParser;
 import org.com.constants.Sizes;
 

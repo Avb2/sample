@@ -4,7 +4,7 @@ package org.com.functionality.resetPassword;
 import javafx.scene.control.TextField;
 import org.com.components.InputField;
 import javafx.scene.layout.GridPane;
-import org.com.components.EnterBtn;
+import org.com.components.buttons.EnterBtn;
 import org.com.db.UserDatabase;
 import javafx.stage.Stage;
 import org.com.screens.LoginScreen;

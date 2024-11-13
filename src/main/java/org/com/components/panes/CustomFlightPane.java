@@ -1,7 +1,7 @@
 package org.com.components.panes;
 
 import javafx.scene.layout.GridPane;
-import org.com.components.EnterBtn;
+import org.com.components.buttons.EnterBtn;
 import org.com.components.InputField;
 import org.com.bases.Component;
 import javafx.scene.Node;

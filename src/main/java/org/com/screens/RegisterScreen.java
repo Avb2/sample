@@ -4,9 +4,9 @@ package org.com.screens;
 import java.sql.SQLException;
 
 import org.com.bases.Screen;
-import org.com.components.EnterBtn;
+import org.com.components.buttons.EnterBtn;
 import org.com.components.InputField;
-import org.com.components.MainMenuBtn;
+import org.com.components.buttons.MainMenuBtn;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.com.bases.Database;
 import java.sql.Connection;
+import org.com.models.RegistrationAdmin;
 
 
 public class UserDatabase extends Database{
@@ -54,6 +55,14 @@ public class UserDatabase extends Database{
             "INSERT INTO Users(firstname, lastname, address, zipcode, state, username, password, email, ssn, question, answer, type) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
             info,
             new Object[] {String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class}
+            );
+    }
+    
+    public void registerUser(RegistrationAdmin registrationModel) throws SQLException{
+        super.updateQuery(
+            "INSERT INTO Users(firstname, lastname, username, password, email, ssn, question, answer, type) VALUES(?, ?, ?, ?, ?, ?, ?,?,?)", 
+            registrationModel.toArray(true),
+            registrationModel.types(true)
             );
     }
 

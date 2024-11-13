@@ -26,7 +26,7 @@ public class Pool {
     // Create a connection to the database;
     private void connect() {
         try {
-            this.connection = DriverManager.getConnection(url, user, password);
+            this.connection = DriverManager.getConnection(this.url, this.user, this.password);
             System.out.println("Connected to the PostgreSQL server successfully.");
         } catch (SQLException e) {
             System.out.println(e.getMessage());

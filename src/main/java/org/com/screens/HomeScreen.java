@@ -3,7 +3,7 @@ package org.com.screens;
 import org.com.bases.Screen;
 import org.com.components.navbars.AuthenticatedNavBar;
 import org.com.state.UserState;
-import org.com.components.FlightCard;
+import org.com.components.cards.FlightCard;
 
 
 import javafx.scene.Scene;

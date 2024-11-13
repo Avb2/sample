@@ -3,9 +3,9 @@ package org.com.components.panes;
 import org.com.bases.Component;
 
 import org.com.bases.Screen;
-import org.com.components.EnterBtn;
+import org.com.components.buttons.EnterBtn;
 import org.com.components.InputField;
-import org.com.components.MainMenuBtn;
+import org.com.components.buttons.MainMenuBtn;
 import org.com.db.UserDatabase;
 import org.com.functionality.resetPassword.ResetPassword;
 

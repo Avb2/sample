@@ -1,4 +1,4 @@
-package org.com.components;
+package org.com.components.buttons;
 
 import org.com.bases.Component;
 import org.com.screens.ManageFlights;
