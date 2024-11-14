@@ -54,7 +54,7 @@ public class EditFlightScreen extends Screen{
                     // Added label
                     Label addedLabel = new Label("Succesffully added");
                     gPane.add(addedLabel, 0 , 8);
-                    new Animate(addedLabel).fade(3);
+                    new Animate(addedLabel).fadeOut(3);
                 } catch (SQLException se) {
                     se.printStackTrace();
                 }
@@ -97,7 +97,7 @@ public class EditFlightScreen extends Screen{
                     gPane.add(successLabel, 0, 3);
 
                     //
-                   new Animate(successLabel).fade(3);
+                   new Animate(successLabel).fadeOut(3);
                 
                 } catch (SQLException error) {
                     String failText = "Failed ";
@@ -105,7 +105,7 @@ public class EditFlightScreen extends Screen{
                     gPane.add(failLabel, 0, 3);
 
                     //
-                    new Animate(failLabel).fade(3);
+                    new Animate(failLabel).fadeOut(3);
 
                    
                 }

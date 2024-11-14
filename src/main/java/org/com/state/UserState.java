@@ -85,7 +85,7 @@ public class UserState {
 
     public void login(UserDatabase userdb, String username) throws SQLException{
         // Get all of the user information from the database with the corresponding username
-        Map<String, Object>[] userInfo = userdb.retrieveAllInfo(username);
+        Map<String, Object>[] userInfo = userdb.retrieveInfoByUsername(username);
 
         // Set logged in state
         this.setLoggedInState();

@@ -14,11 +14,16 @@ public class InputField {
 
         // Username Label
         Label usernamLabel = new Label(label);
+        usernamLabel.getStyleClass().add("text-field-label-1");
         pane.add(usernamLabel, 0, 0);
 
         // Username Field
         TextField usernameField = new TextField();
+        usernameField.getStyleClass().add("text-field-1");
+        usernameField.setPrefSize(210, 32);
         pane.add(usernameField, 1, 0);
+
+
 
 
         return pane;

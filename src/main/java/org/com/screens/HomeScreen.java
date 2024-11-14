@@ -4,7 +4,7 @@ import org.com.bases.Screen;
 import org.com.components.navbars.AuthenticatedNavBar;
 import org.com.state.UserState;
 import org.com.components.cards.FlightCard;
-
+import org.com.constants.Sizes;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -24,7 +24,7 @@ import java.util.Map;
 
 import org.com.db.parser.ResultSetParser;
 import java.sql.Connection;
-
+import javafx.scene.control.ScrollPane;
 
 
 
@@ -41,6 +41,7 @@ public class HomeScreen extends Screen{
     @Override
     public Scene createScreen(Stage stage) {
         GridPane pane = new GridPane();
+        pane.getStyleClass().add("background-primary");
         pane.setAlignment(Pos.TOP_CENTER);
         pane.setVgap(Sizes.largeGap);
         pane.setPadding(new Insets(10,10,10,10));
@@ -54,11 +55,26 @@ public class HomeScreen extends Screen{
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
-        pane.add(new Label("Welcome, " + name + "!"), 0, 1);
+
+
+        Label welcomeLabel = new Label("Welcome, " + name + "!");
+        welcomeLabel.getStyleClass().add("subtitle");
+        pane.add(welcomeLabel, 0, 1);
+
+
+        Label youFlightsLabel = new Label("Your Flights");
+        youFlightsLabel.getStyleClass().add("title");
+        pane.add(youFlightsLabel, 0, 2);
+
+
+        ScrollPane scrollPane = new ScrollPane();
+        pane.add(scrollPane, 0, 3);
+        
 
         GridPane subPane = new GridPane();
+    
         subPane.setVgap(Sizes.smallGap);
-        pane.add(subPane, 0, 2);
+        
 
         // Refresh button to load new flights
         // Retrieve flights
@@ -85,6 +101,7 @@ public class HomeScreen extends Screen{
                 
                 // Remove a booking
                 Button deleteBtn = new Button("-");
+                deleteBtn.getStyleClass().add("button-1");
                 deleteBtn.setOnAction(e -> {
                     try {
                         new BookingDatabase(this.connection).removeBooking(this.userState.getUid(), Integer.parseInt(flightData[index].get(keys[0])));
@@ -99,7 +116,7 @@ public class HomeScreen extends Screen{
                 tempPane.add(deleteBtn, 1,0);
 
 
-                pane.add(tempPane, 0, i + 2);
+                subPane.add(tempPane, 0, i + 2);
             }
         }
 
@@ -109,14 +126,16 @@ public class HomeScreen extends Screen{
             e.printStackTrace();
         }
         
-        // Pagination button to load more flights
+
+        scrollPane.setContent(subPane);
         
 
 
       
 
-
-        return new Scene(pane, 400, 600);
+        Scene scene = new Scene(pane, Sizes.primaryHeight, Sizes.primaryWidth);
+        scene.getStylesheets().add(getClass().getResource("/org/com/style.css").toExternalForm());
+        return scene;
     }
     
 }

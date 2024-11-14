@@ -1,18 +1,16 @@
 package org.com.screens;
 
-import javafx.animation.FadeTransition;
-import javafx.animation.RotateTransition;
-import javafx.animation.Timeline;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-import java.sql.Connection;;
+import org.com.animations.Animate;
+import java.sql.Connection;
 import org.com.bases.Screen;
 import org.com.constants.Sizes;
+
 
 
 public class SplashScreen extends Screen{
@@ -28,27 +26,18 @@ public class SplashScreen extends Screen{
         
         // Main splash screen
         GridPane mainPane = new GridPane();
+        mainPane.getStyleClass().add("background-primary");
         mainPane.setVgap(Sizes.largeGap);
         mainPane.setAlignment(Pos.CENTER);
 
         Label label = new Label("QualityAirlines.com");
-        label.setStyle("-fx-font-size: 20");
+        label.getStyleClass().add("title");
         mainPane.add(label, 0, 0);
 
 
-        RotateTransition rotateTransition = new RotateTransition(Duration.millis(1000), label);
-        rotateTransition.setByAngle(360);
-        
-        rotateTransition.setCycleCount(1);
-        rotateTransition.setAutoReverse(true);
-        rotateTransition.play();
-
-        FadeTransition fadeTransition = new FadeTransition(Duration.millis(2000), label);
-        fadeTransition.setFromValue(0);
-        fadeTransition.setToValue(1);
-        fadeTransition.setCycleCount(1);
-        fadeTransition.setAutoReverse(false);
-        fadeTransition.play();
+        Animate animationLabel = new Animate(label);
+        animationLabel.rotate(1, 360);
+        animationLabel.fadeIn(2);
 
 
         GridPane subPane = new GridPane();
@@ -58,20 +47,21 @@ public class SplashScreen extends Screen{
 
         Button loginBtn = new Button("Login");
         loginBtn.setPrefSize(100,30);
-        loginBtn.setStyle("-fx-font-size: 15");
+        loginBtn.getStyleClass().add("button-1");
         loginBtn.setOnAction(e -> stage.setScene(new LoginScreen(this.connection).createScreen(stage)));
         subPane.add(loginBtn, 0, 0);
 
 
         Button registerBtn = new Button( "Register");
         registerBtn.setPrefSize(100,30);
-        registerBtn.setStyle("-fx-font-size: 15");
+        registerBtn.getStyleClass().add("button-1");
         registerBtn.setOnAction(e -> stage.setScene(new RegisterScreen(this.connection).createScreen(stage)));
         subPane.add(registerBtn, 0, 1);
 
 
 
-        Scene scene = new Scene(mainPane, 300, 300);
+        Scene scene = new Scene(mainPane, Sizes.primaryHeight, Sizes.primaryWidth);
+        scene.getStylesheets().add(getClass().getResource("/org/com/style.css").toExternalForm());
 
         return scene;
     }

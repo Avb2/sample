@@ -80,10 +80,4 @@ public class AddAdminPane extends Panes{
     }
 
 
-    // Use if buttons need stage to push
-    @Override
-    public void createPane(GridPane mainPane, UserState userState, Connection connection, Stage stage){
-
-    }
-
 }

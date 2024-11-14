@@ -29,6 +29,8 @@ import org.com.db.BookingDatabase;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import org.com.db.parser.ResultSetParser;
+import javafx.scene.control.ScrollPane;
+
 
 
 public class ManageFlights extends Screen{
@@ -44,6 +46,7 @@ public class ManageFlights extends Screen{
     @Override
     public Scene createScreen(Stage stage){
         GridPane pane = new GridPane();
+        pane.getStyleClass().add("background-primary");
         pane.setPadding(new Insets(10,10,10,10));
         pane.setAlignment(Pos.TOP_CENTER);
         pane.setVgap(Sizes.largeGap);
@@ -51,9 +54,17 @@ public class ManageFlights extends Screen{
 
 
         Label titleLabel = new Label("Manage flights");
+        titleLabel.getStyleClass().add("title");
         pane.add(titleLabel, 0 ,1);
 
 
+        ScrollPane scrollPane = new ScrollPane();
+        pane.add(scrollPane, 0, 3);
+
+
+        GridPane subPane = new GridPane();
+        scrollPane.setContent(subPane);
+        
 
 
         // TODO move this elsewhere, business logic
@@ -82,6 +93,7 @@ public class ManageFlights extends Screen{
 
             // Add Button
             Button addBtn = new Button("+");
+            addBtn.getStyleClass().add("button-1");
             // Create a booking
             addBtn.setOnAction(e -> {
                 try {
@@ -178,7 +190,7 @@ public class ManageFlights extends Screen{
             tempPane.add(deleteBtn, 1,1);
 
 
-            pane.add(tempPane, 0, i + 3);}
+            subPane.add(tempPane, 0, i);}
         }
 
 
@@ -187,10 +199,10 @@ public class ManageFlights extends Screen{
             e.printStackTrace();
         }
     
-
-        // Display flights as flight cards wrapped in a grid pane with add/remove buttons
-
-        return new Scene(pane, 450, 600);
+        
+        Scene scene = new Scene(pane, Sizes.primaryHeight, Sizes.primaryWidth);
+        scene.getStylesheets().add(getClass().getResource("/org/com/style.css").toExternalForm());
+        return scene;
         
     }   
 }

@@ -3,6 +3,7 @@ package org.com.animations;
 import javafx.animation.FadeTransition;
 import javafx.util.Duration;
 import javafx.scene.Node;
+import javafx.animation.RotateTransition;
 
 
 public class Animate {
@@ -12,15 +13,36 @@ public class Animate {
         this.node = node;
     }
 
-    public void fade(int seconds){
+    public void fadeIn(int seconds){
         FadeTransition animation = new FadeTransition(Duration.millis(seconds * 1000));
                     animation.setNode(this.node);
-                    animation.setFromValue(1.0); 
-                    animation.setToValue(0.0); 
+                    animation.setFromValue(0); 
+                    animation.setToValue(1.0); 
                     animation.setAutoReverse(false);
                     animation.setCycleCount(1);
 
                     // Fading aniamtion
                     animation.play();
+    }
+
+    public void fadeOut(int seconds){
+        FadeTransition animation = new FadeTransition(Duration.millis(seconds * 1000));
+                    animation.setNode(this.node);
+                    animation.setFromValue(1.0); 
+                    animation.setToValue(0); 
+                    animation.setAutoReverse(false);
+                    animation.setCycleCount(1);
+
+                    // Fading aniamtion
+                    animation.play();
+    }
+
+    public void rotate(int seconds, int angle){
+        RotateTransition rotateTransition = new RotateTransition(Duration.millis(seconds * 1000), this.node);
+        rotateTransition.setByAngle(angle);
+        
+        rotateTransition.setCycleCount(1);
+        rotateTransition.setAutoReverse(true);
+        rotateTransition.play();
     }
 }

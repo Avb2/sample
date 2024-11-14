@@ -32,6 +32,7 @@ public class AuthenticatedNavBar extends Component{
     @Override
     public Node createComponent(){
         GridPane pane = new GridPane();
+        pane.getStyleClass().add("navbar-primary");
         pane.setAlignment(Pos.TOP_CENTER);
         pane.setHgap(40);
 

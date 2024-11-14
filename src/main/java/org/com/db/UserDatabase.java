@@ -20,12 +20,61 @@ public class UserDatabase extends Database{
     }
 
 
-    public Map<String, Object>[] retrieveAllInfo (String username) throws SQLException{
+    public Map<String, Object>[] retrieveInfoByUsername (String username) throws SQLException{
         ResultSet result = super.query("SELECT id, firstname, lastname, type FROM Users WHERE username=?", new String[] {username});
         
         
         return new ResultSetParser(result).parse(new String[] {"id", "firstname", "lastname", "type"}, new Class<?>[] {Integer.class, String.class, String.class, String.class});
     }
+
+    public Map<String, Object>[] retrieveInfoBySSN (String ssn) throws SQLException{
+        ResultSet result = super.query("SELECT id, firstname, lastname, type FROM Users WHERE ssn=?", new String[] {ssn});
+        
+        
+        return new ResultSetParser(result).parse(new String[] {"id", "firstname", "lastname", "type"}, new Class<?>[] {Integer.class, String.class, String.class, String.class});
+    }
+    
+
+ public Map<String, Object>[] retrieveAllInfoBySSN (String ssn) throws SQLException{
+        ResultSet result = super.query("SELECT id, firstname, lastname, type, username, password, zipcode, ssn, address, state, email, question, answer, type FROM Users WHERE ssn=?", new String[] {ssn});
+        
+        
+        return new ResultSetParser(result).parse(
+            new String[] {
+                "id",
+                "firstname",
+                "lastname", 
+                "type", 
+                "username", 
+                "password", 
+                "zipcode", 
+                "ssn", 
+                "address", 
+                "state", 
+                "email", 
+                "question", 
+                "answer", 
+                "type"
+            }, new Class<?>[] {
+                Integer.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class
+                    });
+    }
+    
+    
+
 
     public Map<String, String>[] retrieveName(String username) throws SQLException{
         ResultSet result = super.query("SELECT firstname, lastname FROM Users WHERE username=?", new String[] {username}); 
@@ -87,5 +136,6 @@ public class UserDatabase extends Database{
         return false;
 
     }
+
 
 }       

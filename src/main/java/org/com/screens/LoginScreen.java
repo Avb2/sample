@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import org.com.components.buttons.StyledButton1;
 import javafx.scene.control.TextField;
 import java.util.HashMap;
 
@@ -14,6 +15,7 @@ import java.util.Map;
 import java.util.ArrayList;
 
 import java.sql.SQLException;
+import org.com.constants.Sizes;
 
 import org.com.bases.Screen;
 import org.com.components.buttons.EnterBtn;
@@ -38,18 +40,23 @@ public class LoginScreen extends Screen {
     public Scene createScreen(Stage stage) {
         // Grid
         GridPane pane = new GridPane();
+        pane.getStyleClass().add("background-primary");
         pane.setAlignment(Pos.CENTER);
         pane.setVgap(Sizes.mediumGap);
 
         // Return to Main Menu Button
-        pane.add(MainMenuBtn.mainMenuButton(this.connection, stage), 0, 0);
+        Button mainMenuButton = MainMenuBtn.mainMenuButton(this.connection, stage);
+        mainMenuButton.getStyleClass().add("button-1");
+        pane.add(mainMenuButton, 0, 0);
 
         // Login title label
         Label loginTitle = new Label("LOGIN");
+        loginTitle.getStyleClass().add("title");
         pane.add(loginTitle, 0, 3);
 
         // Add subpane to main pane
         GridPane subPane = new GridPane();
+        subPane.getStyleClass().add("background-primary");
         subPane.setVgap(Sizes.smallGap);
         pane.add(subPane, 0, 4);
 
@@ -67,13 +74,12 @@ public class LoginScreen extends Screen {
         }), 0, 2);
 
         // Reset Password Button
-        Button resetButton = new Button("Reset Password");
-        resetButton.setPrefSize(150, 30);
-        resetButton.setStyle("-fx-font-size: 15");
-        resetButton.setOnAction(e -> stage.setScene(new ResetPasswordScreen(this.connection).createScreen(stage)));
+        Button resetButton = (Button) (new StyledButton1("Reset Password" , e -> {stage.setScene(new ResetPasswordScreen(this.connection).createScreen(stage));}).createComponent());
         subPane.add(resetButton, 1, 2);
 
-        return new Scene(pane, 450, 300);
+        Scene scene =  new Scene(pane, Sizes.primaryHeight, Sizes.primaryWidth);
+        scene.getStylesheets().add(getClass().getResource("/org/com/style.css").toExternalForm());
+        return scene;
     }
 
 }

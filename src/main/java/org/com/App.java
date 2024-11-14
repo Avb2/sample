@@ -26,6 +26,7 @@ public class App extends Application {
         Connection connection = pool.returnConnection();
         if (connection != null){
             Scene scene = new SplashScreen(connection).createScreen(stage);
+            scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
             stage.setScene(scene);
             stage.show();
         } else {

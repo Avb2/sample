@@ -9,8 +9,8 @@ import javafx.scene.control.Button;
 public class EnterBtn {
     public static Button EnterButton(EventHandler<ActionEvent> event){
         Button button = new Button("Enter");
-        button.setPrefSize(150,30);
-        button.setStyle("-fx-font-size: 15");
+        button.getStyleClass().add("button-1");
+        button.setPrefSize(120,30);
         button.setOnAction(event);
 
         return button;

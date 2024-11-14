@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 
 public abstract class Panes {
     public abstract void createPane(GridPane mainPane, UserState userState, Connection connection);
+    
     public void createPane(GridPane mainPane, UserState userState, Connection connection, Stage stage){}
 
 }

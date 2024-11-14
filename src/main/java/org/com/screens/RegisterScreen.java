@@ -34,6 +34,7 @@ public class RegisterScreen extends Screen{
     public Scene createScreen(Stage stage){
         // Grid pane
         GridPane pane = new GridPane();
+        pane.getStyleClass().add("background-primary");
         pane.setAlignment(Pos.CENTER);
 
         // main menu
