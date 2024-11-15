@@ -29,7 +29,7 @@ public class AddAdminPane extends Panes{
         GridPane pane = new GridPane();
         mainPane.add(pane, 0, 0);
 
-        GridPane navBar = new AdminNavBar(this.stage, userState, connection).createComponent();
+        GridPane navBar = new AdminNavBar(this.stage, userState, connection, mainPane).createComponent();
         pane.add(navBar, 0, 0);
 
         // Add  admins

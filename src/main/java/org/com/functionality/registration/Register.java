@@ -20,7 +20,7 @@ interface Validator {
 
 
 public class Register {
-    public static void createAccount(Connection connection, GridPane firstNameField, GridPane lastNameField, GridPane addressField, GridPane zipcodeField, GridPane stateField, GridPane usernameField, GridPane passwordField, GridPane emailField, GridPane ssnField, GridPane securityQuestion, GridPane securityAnswer, Stage stage){
+    public static void createAccount(Connection connection, GridPane pane,  GridPane firstNameField, GridPane lastNameField, GridPane addressField, GridPane zipcodeField, GridPane stateField, GridPane usernameField, GridPane passwordField, GridPane emailField, GridPane ssnField, GridPane securityQuestion, GridPane securityAnswer, Stage stage){
         // Create account
         String[] valid = Register.validateRegistrationForm(new GridPane[] {firstNameField, lastNameField, addressField, zipcodeField, stateField, usernameField, passwordField, emailField, ssnField, securityQuestion, securityAnswer});
 
@@ -34,7 +34,7 @@ public class Register {
                 userDb.registerUser(valid);
                 // Login the user and push to homepage
                 Login.login(
-                    usernameField, passwordField, connection, stage);
+                    usernameField, passwordField, connection, pane, stage);
             } catch (SQLException err){
                 err.printStackTrace();
             }

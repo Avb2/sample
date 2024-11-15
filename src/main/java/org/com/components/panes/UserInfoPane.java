@@ -33,7 +33,7 @@ public class UserInfoPane extends Panes{
         mainPane.add(pane, 0, 0);
 
         // Nav bar
-        GridPane adminNavBar = new AdminNavBar(this.stage, userState, connection).createComponent();
+        GridPane adminNavBar = new AdminNavBar(this.stage, userState, connection, mainPane).createComponent();
         pane.add(adminNavBar, 0, 0);
 
 

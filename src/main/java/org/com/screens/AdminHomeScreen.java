@@ -28,7 +28,7 @@ public class AdminHomeScreen extends Screen {
     public GridPane createPane(Stage stage){
         // Create main pane
         GridPane pane = new GridPane();
-        pane.add(new AdminNavBar(stage, userState, this.connection).createComponent(), 0, 0);   
+        pane.add(new AdminNavBar(stage, userState, this.connection, pane).createComponent(), 0, 0);   
 
         return pane;
     }

@@ -50,7 +50,7 @@ public class ManageFlights extends Screen{
         pane.setPadding(new Insets(10,10,10,10));
         pane.setAlignment(Pos.TOP_CENTER);
         pane.setVgap(Sizes.largeGap);
-        pane.add(new AuthenticatedNavBar(this.connection, stage, this.userState).createComponent(), 0, 0);
+        pane.add(new AuthenticatedNavBar(this.connection, stage, this.userState, pane).createComponent(), 0, 0);
 
 
         Label titleLabel = new Label("Manage flights");

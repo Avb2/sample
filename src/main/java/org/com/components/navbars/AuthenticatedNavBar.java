@@ -22,11 +22,13 @@ public class AuthenticatedNavBar extends Component{
     private Connection connection;
     private final Stage stage;
     private UserState userState;
+    private GridPane mainPane;
 
-    public AuthenticatedNavBar(Connection connection, Stage stage, UserState userState){
+    public AuthenticatedNavBar(Connection connection, Stage stage, UserState userState, GridPane mainPane){
         this.connection = connection;
         this.stage = stage;
         this.userState = userState;
+        this.mainPane = mainPane;
     }
 
     @Override
@@ -42,7 +44,7 @@ public class AuthenticatedNavBar extends Component{
         
         pane.add(new ManageFlightsButton(this.connection, this.stage, this.userState).createComponent(), 1, 0);
         
-        pane.add(LogOutBtn.LogOutButton(this.connection, this.stage, this.userState), 2, 0);
+        pane.add(LogOutBtn.LogOutButton(this.connection, this.stage, this.userState, this.mainPane), 2, 0);
 
         return pane;
 

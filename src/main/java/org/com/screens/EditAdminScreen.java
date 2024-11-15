@@ -30,7 +30,7 @@ public class EditAdminScreen extends Screen{
         GridPane pane = new GridPane();
 
         // Admin nav bar
-        GridPane adminNavBar = new AdminNavBar(stage, userState, connection).createComponent();
+        GridPane adminNavBar = new AdminNavBar(stage, userState, connection, pane).createComponent();
         pane.add(adminNavBar, 0, 0);
 
         // Add admins button

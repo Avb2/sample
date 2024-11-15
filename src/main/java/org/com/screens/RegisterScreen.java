@@ -99,7 +99,7 @@ public class RegisterScreen extends Screen{
 
 
         pane.add(EnterBtn.EnterButton(e -> {
-            Register.createAccount(this.connection, firstNameField, lastNameField, addressField, zipcodeField, stateField, usernameField, passwordField, emailField, ssnField, securityQuestion, securityAnswer, stage);
+            Register.createAccount(this.connection, pane,  firstNameField, lastNameField, addressField, zipcodeField, stateField, usernameField, passwordField, emailField, ssnField, securityQuestion, securityAnswer, stage);
         }), 0, 5, 2, 1);
 
 

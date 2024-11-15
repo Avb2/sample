@@ -15,4 +15,14 @@ public abstract class Screen {
     }
 
     public abstract GridPane createPane(Stage stage);
+
+
+    public void createPane(GridPane mainPane, Stage stage){
+        // Clear the current pane;
+        mainPane.getChildren().clear();
+
+        mainPane.add(this.createPane(stage), 0, 0);
+
+
+    }
 }

@@ -74,11 +74,11 @@ public class LoginScreen extends Screen {
  
          // Login Button
          subPane.add(EnterBtn.EnterButton(e -> {
-             Login.login(usernameFieldPane, passwordFieldPane, this.connection,  stage);
+             Login.login(usernameFieldPane, passwordFieldPane, this.connection, pane,  stage);
          }), 0, 2);
  
          // Reset Password Button
-         Node resetButton = new StyledButton1("Reset Password" , e -> {stage.setScene(new ResetPasswordScreen(this.connection).createScreen(stage));}).createComponent();
+         Node resetButton = new StyledButton1("Reset Password" , e -> new ResetPasswordScreen(this.connection).createPane(pane, stage)).createComponent();
          subPane.add(resetButton, 1, 2);
          
          return pane;

@@ -21,11 +21,13 @@ public class AdminNavBar extends Component{
     private final Stage stage;
     private UserState userState;
     private Connection connection;
+    private GridPane mainPane;
 
-    public AdminNavBar(Stage stage, UserState userState, Connection connection){
+    public AdminNavBar(Stage stage, UserState userState, Connection connection, GridPane mainPane){
         this.stage = stage;
         this.userState = userState;
         this.connection = connection;
+        this.mainPane = mainPane;
     }
 
     @Override
@@ -42,7 +44,7 @@ public class AdminNavBar extends Component{
         
         pane.add(new ManageAdminsBtn(this.connection, this.userState, this.stage).createComponent(), 2, 0);
         
-        pane.add(LogOutBtn.LogOutButton(this.connection, this.stage, this.userState), 3, 0);
+        pane.add(LogOutBtn.LogOutButton(this.connection, this.stage, this.userState, this.mainPane), 3, 0);
 
         return pane;
     }

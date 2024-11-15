@@ -48,7 +48,7 @@ public class HomeScreen extends Screen{
         pane.setVgap(Sizes.largeGap);
         pane.setPadding(new Insets(10,10,10,10));
 
-        pane.add(new AuthenticatedNavBar(this.connection, stage, this.userState).createComponent(), 0, 0);
+        pane.add(new AuthenticatedNavBar(this.connection, stage, this.userState, pane).createComponent(), 0, 0);
 
         String name = null;
         try {

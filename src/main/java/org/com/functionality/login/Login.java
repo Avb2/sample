@@ -15,7 +15,7 @@ import org.com.db.UserDatabase;
 import java.sql.Connection;
 
 public class Login {
-    public static void login(GridPane usernameFieldPane, GridPane passwordFieldPane, Connection connection, Stage stage){
+    public static void login(GridPane usernameFieldPane, GridPane passwordFieldPane, Connection connection, GridPane pane, Stage stage){
         UserDatabase conn = new UserDatabase(connection);
             // Extract textfields from gridpanes
             TextField usernameField = (TextField) (usernameFieldPane.getChildren().get(1));
@@ -41,10 +41,10 @@ public class Login {
 
                     // If the user is an admin
                     if (Login.validateAdmin(connection, username)){
-                        stage.setScene(new AdminHomeScreen(connection, userState).createScreen(stage));
+                        new AdminHomeScreen(connection, userState).createPane(pane, stage);
                     } else {
                         // Push to main logged in screen
-                        stage.setScene(new HomeScreen(connection, userState).createScreen(stage));
+                        new HomeScreen(connection, userState).createPane(pane, stage);
                     }
 
 
