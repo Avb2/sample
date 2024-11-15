@@ -38,8 +38,10 @@ public class HomeScreen extends Screen{
         this.userState = userState;
     }
 
+
+
     @Override
-    public Scene createScreen(Stage stage) {
+    public GridPane createPane(Stage stage){
         GridPane pane = new GridPane();
         pane.getStyleClass().add("background-primary");
         pane.setAlignment(Pos.TOP_CENTER);
@@ -130,12 +132,7 @@ public class HomeScreen extends Screen{
         scrollPane.setContent(subPane);
         
 
-
-      
-
-        Scene scene = new Scene(pane, Sizes.primaryHeight, Sizes.primaryWidth);
-        scene.getStylesheets().add(getClass().getResource("/org/com/style.css").toExternalForm());
-        return scene;
+        return pane;
     }
     
 }

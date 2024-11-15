@@ -21,18 +21,18 @@ public class SplashScreen extends Screen{
     }
 
     @Override
-    public Scene createScreen(Stage stage){
+    public GridPane createPane(Stage stage){
 
         
         // Main splash screen
-        GridPane mainPane = new GridPane();
-        mainPane.getStyleClass().add("background-primary");
-        mainPane.setVgap(Sizes.largeGap);
-        mainPane.setAlignment(Pos.CENTER);
+        GridPane pane = new GridPane();
+        pane.getStyleClass().add("background-primary");
+        pane.setVgap(Sizes.largeGap);
+        pane.setAlignment(Pos.CENTER);
 
         Label label = new Label("QualityAirlines.com");
         label.getStyleClass().add("title");
-        mainPane.add(label, 0, 0);
+        pane.add(label, 0, 0);
 
 
         Animate animationLabel = new Animate(label);
@@ -43,7 +43,7 @@ public class SplashScreen extends Screen{
         GridPane subPane = new GridPane();
         subPane.setAlignment(Pos.CENTER);
         subPane.setVgap(Sizes.smallGap);
-        mainPane.add(subPane, 0, 2);
+        pane.add(subPane, 0, 2);
 
         Button loginBtn = new Button("Login");
         loginBtn.setPrefSize(100,30);
@@ -58,11 +58,6 @@ public class SplashScreen extends Screen{
         registerBtn.setOnAction(e -> stage.setScene(new RegisterScreen(this.connection).createScreen(stage)));
         subPane.add(registerBtn, 0, 1);
 
-
-
-        Scene scene = new Scene(mainPane, Sizes.primaryHeight, Sizes.primaryWidth);
-        scene.getStylesheets().add(getClass().getResource("/org/com/style.css").toExternalForm());
-
-        return scene;
+        return pane;
     }
 }

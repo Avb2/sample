@@ -33,8 +33,8 @@ public class EditFlightScreen extends Screen{
     }
 
 
-    @Override
-    public Scene createScreen(Stage stage) {
+    @Override 
+    public GridPane createPane(Stage stage){
         GridPane pane = new GridPane();
         pane.add(new AdminNavBar(stage, this.userState, this.connection).createComponent(), 0, 0);
         pane.setAlignment(Pos.TOP_CENTER);
@@ -115,7 +115,7 @@ public class EditFlightScreen extends Screen{
         pane.add(deleteBtn, 0, 3);
 
 
-        return new Scene(pane, 450, 500);
-    };
+        return pane;
+    }
 }
 

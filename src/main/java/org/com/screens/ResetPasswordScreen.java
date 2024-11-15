@@ -29,7 +29,7 @@ public class ResetPasswordScreen extends Screen {
     }
 
     @Override
-    public Scene createScreen(Stage stage){
+    public GridPane createPane(Stage stage){
         // Main pane
         GridPane pane = new GridPane();
         pane.setVgap(Sizes.largeGap);
@@ -74,10 +74,7 @@ public class ResetPasswordScreen extends Screen {
 
 
 
-
-        Scene resetPasswordStage = new Scene(pane, 450, 300);
-
-        return resetPasswordStage;
+            return pane;
     }
 
 }

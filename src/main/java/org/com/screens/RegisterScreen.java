@@ -31,7 +31,10 @@ public class RegisterScreen extends Screen{
         this.connection = connection;
     }
 
-    public Scene createScreen(Stage stage){
+    @Override
+    public GridPane createPane(Stage stage){
+        
+        
         // Grid pane
         GridPane pane = new GridPane();
         pane.getStyleClass().add("background-primary");
@@ -98,8 +101,9 @@ public class RegisterScreen extends Screen{
         pane.add(EnterBtn.EnterButton(e -> {
             Register.createAccount(this.connection, firstNameField, lastNameField, addressField, zipcodeField, stateField, usernameField, passwordField, emailField, ssnField, securityQuestion, securityAnswer, stage);
         }), 0, 5, 2, 1);
-        
-        return new Scene(pane, 600, 450);
+
+
+        return pane; 
 
 
     }

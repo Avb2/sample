@@ -22,12 +22,14 @@ public class AdminHomeScreen extends Screen {
         this.userState = userState;
     }
 
+
+    
     @Override
-    public Scene createScreen(Stage stage) {
+    public GridPane createPane(Stage stage){
         // Create main pane
         GridPane pane = new GridPane();
-        pane.add(new AdminNavBar(stage, userState, this.connection).createComponent(), 0, 0);
+        pane.add(new AdminNavBar(stage, userState, this.connection).createComponent(), 0, 0);   
 
-        return new Scene(pane, 450, 400);
+        return pane;
     }
 }

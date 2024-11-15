@@ -24,16 +24,14 @@ public class EditAdminScreen extends Screen{
     }
     
     
+
     @Override
-    public Scene createScreen(Stage stage){
+    public GridPane createPane(Stage stage){
         GridPane pane = new GridPane();
 
         // Admin nav bar
         GridPane adminNavBar = new AdminNavBar(stage, userState, connection).createComponent();
         pane.add(adminNavBar, 0, 0);
-
-
-
 
         // Add admins button
         Button manageAdminBtn = new Button("Add Admin");
@@ -50,7 +48,6 @@ public class EditAdminScreen extends Screen{
         lookupAdminBtn.setOnAction(e -> new LookupAdminPane(stage).createPane(pane, userState, connection));
         pane.add(lookupAdminBtn, 0, 3);
 
-
-        return new Scene(pane, 450, 450);
+        return pane;
     }
 }

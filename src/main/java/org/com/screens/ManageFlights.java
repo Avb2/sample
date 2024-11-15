@@ -44,7 +44,7 @@ public class ManageFlights extends Screen{
     }
 
     @Override
-    public Scene createScreen(Stage stage){
+    public GridPane createPane(Stage stage){
         GridPane pane = new GridPane();
         pane.getStyleClass().add("background-primary");
         pane.setPadding(new Insets(10,10,10,10));
@@ -198,11 +198,9 @@ public class ManageFlights extends Screen{
         } catch (SQLException e){
             e.printStackTrace();
         }
-    
-        
-        Scene scene = new Scene(pane, Sizes.primaryHeight, Sizes.primaryWidth);
-        scene.getStylesheets().add(getClass().getResource("/org/com/style.css").toExternalForm());
-        return scene;
+
+
+        return pane;
         
     }   
 }

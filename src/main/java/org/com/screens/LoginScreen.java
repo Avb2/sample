@@ -36,50 +36,51 @@ public class LoginScreen extends Screen {
         this.connection = connection;
     }
 
+
+
+
     @Override
-    public Scene createScreen(Stage stage) {
-        // Grid
-        GridPane pane = new GridPane();
-        pane.getStyleClass().add("background-primary");
-        pane.setAlignment(Pos.CENTER);
-        pane.setVgap(Sizes.mediumGap);
-
-        // Return to Main Menu Button
-        Button mainMenuButton = MainMenuBtn.mainMenuButton(this.connection, stage);
-        mainMenuButton.getStyleClass().add("button-1");
-        pane.add(mainMenuButton, 0, 0);
-
-        // Login title label
-        Label loginTitle = new Label("LOGIN");
-        loginTitle.getStyleClass().add("title");
-        pane.add(loginTitle, 0, 3);
-
-        // Add subpane to main pane
-        GridPane subPane = new GridPane();
-        subPane.getStyleClass().add("background-primary");
-        subPane.setVgap(Sizes.smallGap);
-        pane.add(subPane, 0, 4);
-
-        // Username Label
-        GridPane usernameFieldPane = InputField.inputField("Username");
-        subPane.add(usernameFieldPane, 0, 0, 2, 1);
-
-        // Password Label
-        GridPane passwordFieldPane = InputField.inputField("Password");
-        subPane.add(passwordFieldPane, 0, 1, 2, 1);
-
-        // Login Button
-        subPane.add(EnterBtn.EnterButton(e -> {
-            Login.login(usernameFieldPane, passwordFieldPane, this.connection,  stage);
-        }), 0, 2);
-
-        // Reset Password Button
-        Button resetButton = (Button) (new StyledButton1("Reset Password" , e -> {stage.setScene(new ResetPasswordScreen(this.connection).createScreen(stage));}).createComponent());
-        subPane.add(resetButton, 1, 2);
-
-        Scene scene =  new Scene(pane, Sizes.primaryHeight, Sizes.primaryWidth);
-        scene.getStylesheets().add(getClass().getResource("/org/com/style.css").toExternalForm());
-        return scene;
+    public GridPane createPane(Stage stage){
+         // Grid
+         GridPane pane = new GridPane();
+         pane.getStyleClass().add("background-primary");
+         pane.setAlignment(Pos.CENTER);
+         pane.setVgap(Sizes.mediumGap);
+ 
+         // Return to Main Menu Button
+         Button mainMenuButton = MainMenuBtn.mainMenuButton(this.connection, stage);
+         mainMenuButton.getStyleClass().add("button-1");
+         pane.add(mainMenuButton, 0, 0);
+ 
+         // Login title label
+         Label loginTitle = new Label("LOGIN");
+         loginTitle.getStyleClass().add("title");
+         pane.add(loginTitle, 0, 3);
+ 
+         // Add subpane to main pane
+         GridPane subPane = new GridPane();
+         subPane.getStyleClass().add("background-primary");
+         subPane.setVgap(Sizes.smallGap);
+         pane.add(subPane, 0, 4);
+ 
+         // Username Label
+         GridPane usernameFieldPane = InputField.inputField("Username");
+         subPane.add(usernameFieldPane, 0, 0, 2, 1);
+ 
+         // Password Label
+         GridPane passwordFieldPane = InputField.inputField("Password");
+         subPane.add(passwordFieldPane, 0, 1, 2, 1);
+ 
+         // Login Button
+         subPane.add(EnterBtn.EnterButton(e -> {
+             Login.login(usernameFieldPane, passwordFieldPane, this.connection,  stage);
+         }), 0, 2);
+ 
+         // Reset Password Button
+         Button resetButton = (Button) (new StyledButton1("Reset Password" , e -> {stage.setScene(new ResetPasswordScreen(this.connection).createScreen(stage));}).createComponent());
+         subPane.add(resetButton, 1, 2);
+         
+         return pane;
     }
 
 }
