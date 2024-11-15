@@ -18,7 +18,6 @@
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/panes/AddAdminPane.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/db/UserDatabase.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/buttons/MainMenuBtn.java
-/Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/buttons/StyledButton1.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/functionality/modify_flights/DeleteFlight.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/models/Registration.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/db/parser/ResultSetParser.java
@@ -28,6 +27,7 @@
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/buttons/ManageFlightsButton.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/panes/SecurityQuestionPane.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/buttons/ManageAdminsBtn.java
+/Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/components/buttons/styled/StyledButton1.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/screens/EditFlightScreen.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/db/FlightDatabase.java
 /Users/alexbringuel/java-dev/class project/sample/src/main/java/org/com/state/db/Pool.java

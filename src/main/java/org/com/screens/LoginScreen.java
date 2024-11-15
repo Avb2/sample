@@ -6,9 +6,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import org.com.components.buttons.StyledButton1;
+import org.com.components.buttons.styled.StyledButton1;
 import javafx.scene.control.TextField;
 import java.util.HashMap;
+import javafx.scene.Node;
 
 import java.util.List;
 import java.util.Map;
@@ -77,7 +78,7 @@ public class LoginScreen extends Screen {
          }), 0, 2);
  
          // Reset Password Button
-         Button resetButton = (Button) (new StyledButton1("Reset Password" , e -> {stage.setScene(new ResetPasswordScreen(this.connection).createScreen(stage));}).createComponent());
+         Node resetButton = new StyledButton1("Reset Password" , e -> {stage.setScene(new ResetPasswordScreen(this.connection).createScreen(stage));}).createComponent();
          subPane.add(resetButton, 1, 2);
          
          return pane;

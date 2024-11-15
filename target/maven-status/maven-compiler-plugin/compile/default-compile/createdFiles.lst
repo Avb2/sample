@@ -11,6 +11,7 @@ org/com/components/buttons/ManageFlightsButton.class
 org/com/components/panes/SecurityQuestionPane.class
 org/com/db/BookingDatabase.class
 org/com/components/LogOutBtn.class
+org/com/components/buttons/styled/StyledButton1.class
 org/com/functionality/login/Login.class
 org/com/models/Flight.class
 org/com/functionality/modify_flights/DeleteFlight.class
@@ -44,7 +45,6 @@ org/com/screens/SplashScreen.class
 org/com/db/FlightDatabase.class
 org/com/models/RegistrationAdmin.class
 org/com/components/panes/AddAdminPane.class
-org/com/components/buttons/StyledButton1.class
 org/com/components/buttons/ModifyFlightsBtn.class
 org/com/components/buttons/ManageAdminsBtn.class
 org/com/SystemInfo.class

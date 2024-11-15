@@ -1,4 +1,4 @@
-package org.com.components.buttons;
+package org.com.components.buttons.styled;
 
 import org.com.bases.Component;
 import javafx.scene.control.Button;

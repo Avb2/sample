@@ -10,8 +10,9 @@ import org.com.animations.Animate;
 import java.sql.Connection;
 import org.com.bases.Screen;
 import org.com.constants.Sizes;
-
-
+import org.com.components.buttons.styled.StyledButton1;
+import javafx.scene.Node;
+ 
 
 public class SplashScreen extends Screen{
     private Connection connection;
@@ -45,17 +46,11 @@ public class SplashScreen extends Screen{
         subPane.setVgap(Sizes.smallGap);
         pane.add(subPane, 0, 2);
 
-        Button loginBtn = new Button("Login");
-        loginBtn.setPrefSize(100,30);
-        loginBtn.getStyleClass().add("button-1");
-        loginBtn.setOnAction(e -> stage.setScene(new LoginScreen(this.connection).createScreen(stage)));
+        Node loginBtn = new StyledButton1("Login", e -> stage.setScene(new LoginScreen(this.connection).createScreen(stage))).createComponent();
         subPane.add(loginBtn, 0, 0);
 
 
-        Button registerBtn = new Button( "Register");
-        registerBtn.setPrefSize(100,30);
-        registerBtn.getStyleClass().add("button-1");
-        registerBtn.setOnAction(e -> stage.setScene(new RegisterScreen(this.connection).createScreen(stage)));
+        Node registerBtn = new StyledButton1("Register", e -> stage.setScene(new RegisterScreen(this.connection).createScreen(stage))).createComponent();
         subPane.add(registerBtn, 0, 1);
 
         return pane;
