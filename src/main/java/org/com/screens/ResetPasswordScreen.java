@@ -37,7 +37,7 @@ public class ResetPasswordScreen extends Screen {
 
 
         // Main menu Btn
-        pane.add(MainMenuBtn.mainMenuButton(this.connection, stage), 0, 0);
+        pane.add(MainMenuBtn.mainMenuButton(this.connection, stage, pane), 0, 0);
 
         
         // Reset password label

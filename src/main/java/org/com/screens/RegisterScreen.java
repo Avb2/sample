@@ -41,7 +41,7 @@ public class RegisterScreen extends Screen{
         pane.setAlignment(Pos.CENTER);
 
         // main menu
-        pane.add(MainMenuBtn.mainMenuButton(this.connection, stage), 0 ,0);
+        pane.add(MainMenuBtn.mainMenuButton(this.connection, stage, pane), 0 ,0);
 
 
 

@@ -38,7 +38,7 @@ public class AdminNavBar extends Component{
 
         
 
-        pane.add(MainMenuBtn.mainMenuButton(this.connection, this.stage, this.userState), 0, 0);
+        pane.add(MainMenuBtn.mainMenuButton(this.connection, this.stage, this.userState, this.mainPane), 0, 0);
 
         pane.add(new EditFlightsBtn(() -> {new PushEditFlight().push(this.connection, userState, stage);}).createComponent(), 1, 0);
         

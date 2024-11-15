@@ -16,27 +16,26 @@ public class ManageFlightsButton extends Component{
     private Connection connection;
     private final Stage stage;
     private UserState userState;
+    private GridPane mainPane;
 
-    public ManageFlightsButton(Connection connection, Stage stage, UserState userState){
+    public ManageFlightsButton(Connection connection, Stage stage, UserState userState, GridPane mainPane){
         this.connection = connection;
         this.stage = stage;
         this.userState = userState;
+        this.mainPane = mainPane;
     }
 
     @Override
     public Node createComponent(){
-        GridPane pane = new GridPane();
-
         Button button = new Button("Manage Flights");
         button.setOnAction(e -> {
-            ManageFlights screen = new ManageFlights(this.connection, this.userState);
-            this.stage.setScene(screen.createScreen(this.stage));
+            new ManageFlights(this.connection, this.userState).createPane(this.mainPane, this.stage);
+        
         });
 
-        pane.add(button, 0, 0);
 
 
-        return pane;
+        return button;
     }
 }
 

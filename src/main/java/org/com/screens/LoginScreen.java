@@ -49,7 +49,7 @@ public class LoginScreen extends Screen {
          pane.setVgap(Sizes.mediumGap);
  
          // Return to Main Menu Button
-         Button mainMenuButton = MainMenuBtn.mainMenuButton(this.connection, stage);
+         Button mainMenuButton = MainMenuBtn.mainMenuButton(this.connection, stage, pane);
          mainMenuButton.getStyleClass().add("button-1");
          pane.add(mainMenuButton, 0, 0);
  

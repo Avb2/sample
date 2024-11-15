@@ -55,3 +55,4 @@ org/com/components/buttons/MainMenuBtn.class
 org/com/screens/EditAdminScreen.class
 org/com/state/db/Pool.class
 org/com/components/navbars/AuthenticatedNavBar.class
+org/com/state/layout/Layout.class

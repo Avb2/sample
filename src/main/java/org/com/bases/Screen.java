@@ -7,6 +7,8 @@ import org.com.constants.Sizes;
 
 
 public abstract class Screen {
+
+
     public Scene createScreen(Stage stage){
         GridPane pane = this.createPane(stage); 
         Scene scene =  new Scene(pane, Sizes.primaryHeight, Sizes.primaryWidth);

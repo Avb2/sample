@@ -40,9 +40,9 @@ public class AuthenticatedNavBar extends Component{
 
         
 
-        pane.add(MainMenuBtn.mainMenuButton(this.connection, this.stage, this.userState), 0, 0);
+        pane.add(MainMenuBtn.mainMenuButton(this.connection, this.stage, this.userState, this.mainPane), 0, 0);
         
-        pane.add(new ManageFlightsButton(this.connection, this.stage, this.userState).createComponent(), 1, 0);
+        pane.add(new ManageFlightsButton(this.connection, this.stage, this.userState, this.mainPane).createComponent(), 1, 0);
         
         pane.add(LogOutBtn.LogOutButton(this.connection, this.stage, this.userState, this.mainPane), 2, 0);
 

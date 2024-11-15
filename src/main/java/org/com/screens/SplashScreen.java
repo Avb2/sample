@@ -23,8 +23,6 @@ public class SplashScreen extends Screen{
 
     @Override
     public GridPane createPane(Stage stage){
-
-        
         // Main splash screen
         GridPane pane = new GridPane();
         pane.getStyleClass().add("background-primary");
